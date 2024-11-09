@@ -4,10 +4,8 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.common.by import By
 import time
 from datetime import datetime
-import numpy as np
 import csv
 import pandas as pd
-import os
 import threading
 from queue import Queue
 
@@ -18,6 +16,7 @@ FIELD_NAMES = [
     "Runtime",
     "ReleaseDate",
     "Directors",
+    "Cast",
     "OriginCountries",
     "Languages",
     "Genres",
@@ -54,6 +53,15 @@ class ImdbPageCrawler:
             "a[class='ipc-metadata-list-item__list-content-item ipc-metadata-list-item__list-content-item--link']",
         )
         return [d.text for d in directors]
+
+    @data_wrapper
+    def get_cast(element):
+        # return element.text
+        casts = element.find_elements(
+            By.CSS_SELECTOR, "a[class='sc-cd7dc4b7-1 kVdWAO']"
+        )
+
+        return [c.text for c in casts]
 
     @data_wrapper
     def get_plot(element):
@@ -119,15 +127,15 @@ class ImdbPageCrawler:
         return languages
 
     def __init__(self):
-        self.option = FirefoxOptions()
-        self.option.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-        self.service = Service(executable_path="./drivers/firefox/geckodriver.exe")
-        self.driver = webdriver.Firefox(service=self.service, options=self.option)
+        self.__option = FirefoxOptions()
+        self.__option.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+        self.__service = Service(executable_path="./drivers/firefox/geckodriver.exe")
+        self.__driver = webdriver.Firefox(service=self.__service, options=self.__option)
 
     def get_entry(self, url, name=""):
         entry_dict = {"ImdbID": ImdbPageCrawler.get_id(url), "Name": name}
-        self.driver.get(url)
-        elements = self.driver.find_elements(By.TAG_NAME, "section")
+        self.__driver.get(url)
+        elements = self.__driver.find_elements(By.TAG_NAME, "section")
         for e in elements:
             if attr := e.get_attribute("data-testid"):
                 match attr:
@@ -137,6 +145,8 @@ class ImdbPageCrawler:
                         entry_dict["Genres"] = ImdbPageCrawler.get_genres(e)
                         entry_dict["Runtime"] = ImdbPageCrawler.get_run_time(e)
                         entry_dict["Directors"] = ImdbPageCrawler.get_directors(e)
+                    case "title-cast":
+                        entry_dict["Cast"] = ImdbPageCrawler.get_cast(e)
                     case "Details":
                         entry_dict["ReleaseDate"] = ImdbPageCrawler.get_release_date(e)
                         entry_dict["OriginCountries"] = ImdbPageCrawler.get_origins(e)
@@ -144,7 +154,7 @@ class ImdbPageCrawler:
         return entry_dict
 
     def terminate(self):
-        self.driver.quit()
+        self.__driver.quit()
 
 
 def threaded(func):
@@ -203,7 +213,7 @@ class Collector:
                     f"Processed {count}/{item_count} --- {(count / item_count):.2%}",
                     end="\r",
                 )
-        print("\nDone")
+        print()
 
 
 def split_dataframe(df, n):
