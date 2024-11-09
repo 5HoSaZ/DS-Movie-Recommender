@@ -143,13 +143,16 @@ def main():
     processed_id = set(processed["ImdbID"].values)
     with open("./database/movie_links.csv", "r") as readfile:
         reader = csv.DictReader(readfile)
-        with open("./database/movie_entries.csv", "a", encoding="utf-8") as writefile:
-            writer = csv.DictWriter(writefile, fieldnames=fieldnames)
-            for i, row in enumerate(reader):
-                name, url = row["Name"], row["Link"]
-                print(f"({i + 1}/{to_process_count}) Getting data from {url}", end="\r")
-                if get_id(url) in processed_id:
-                    continue
+
+        for i, row in enumerate(reader):
+            name, url = row["Name"], row["Link"]
+            print(f"({i + 1}/{to_process_count}) Getting data from {url}", end="\r")
+            if get_id(url) in processed_id:
+                continue
+            with open(
+                "./database/movie_entries.csv", "a", encoding="utf-8"
+            ) as writefile:
+                writer = csv.DictWriter(writefile, fieldnames=fieldnames)
                 writer.writerow(get_entry(url, name))
             print("\nDone")
 
