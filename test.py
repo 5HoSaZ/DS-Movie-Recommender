@@ -1,6 +1,5 @@
-from scrapers.utility.wrapper import data_fallback
+from scrapers.crawlers import get_crawler
 
-# from scrapers import ImdbPageCrawler
 # import time
 # import pandas as pd
 
@@ -22,11 +21,5 @@ from scrapers.utility.wrapper import data_fallback
 #     return all_links.loc[all_id.isin(not_processed_id)]
 
 
-@data_fallback(0)
-def test():
-    return 1 / 0
-
-
-print(test())
-# # not_processed =
-# # print(all_id)
+if __name__ == "__main__":
+    a = get_crawler("imdb")
