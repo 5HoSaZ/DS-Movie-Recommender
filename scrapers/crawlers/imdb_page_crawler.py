@@ -1,4 +1,5 @@
 from .interface import PageCrawler
+from ..utility.data import get_id, get_field_names
 from ..utility.wrapper import data_fallback
 
 from selenium.webdriver.common.by import By
@@ -6,24 +7,10 @@ from datetime import datetime
 
 
 class ImdbPageCrawler(PageCrawler):
-    def __init__(self):
-        super().__init__()
-        self.field_names = [
-            "ImdbID",
-            "Name",
-            "Runtime",
-            "ReleaseDate",
-            "Directors",
-            "Cast",
-            "OriginCountries",
-            "Languages",
-            "Genres",
-            "Rating",
-            "Plot",
-        ]
+    FIELD_NAMES = get_field_names("imdb")
 
     def _get_id(url) -> str:
-        return url.removeprefix("https://www.imdb.com/title/")[:-1]
+        return get_id("imdb")(url)
 
     @data_fallback([])
     def _get_directors(element) -> list[str]:
@@ -49,11 +36,11 @@ class ImdbPageCrawler(PageCrawler):
         )
         return [c.text for c in casts]
 
-    @data_fallback
+    @data_fallback(None)
     def _get_plot(element) -> str:
         return element.find_element(By.CSS_SELECTOR, "span[data-testid='plot-xl']").text
 
-    @data_fallback
+    @data_fallback(None)
     def _get_run_time(element) -> str:
         runtime = element.find_element(
             By.CSS_SELECTOR,
@@ -70,18 +57,20 @@ class ImdbPageCrawler(PageCrawler):
         genres = [f.text for f in fields]
         return genres
 
-    @data_fallback
+    @data_fallback(None)
     def _get_release_date(element) -> str:
+        formats = ["%B %d, %Y", "%B %Y", "%Y"]
+        rformats = ["%Y-%m-%d", "%B %Y", "%Y"]
         date = element.find_element(
             By.CSS_SELECTOR, "li[data-testid='title-details-releasedate']"
         ).text.split("\n")[-1]
         date = date[: date.rindex(" (")]
-        try:
-            date = datetime.strptime(date, "%B %d, %Y")
-            return date.strftime("%Y-%m-%d")
-        except ValueError:
-            date = datetime.strptime(date, "%B %Y")
-            return date.strftime("%Y-%m")
+        for format, rformat in zip(formats, rformats):
+            try:
+                date = datetime.strptime(date, format)
+                return date.strftime(rformat)
+            except ValueError:
+                continue
 
     @data_fallback([])
     def _get_origins(element) -> list[str]:
@@ -105,7 +94,7 @@ class ImdbPageCrawler(PageCrawler):
         languages = [lang.text for lang in languages]
         return languages
 
-    @data_fallback
+    @data_fallback(None)
     def get_imdb_rating(element) -> str:
         rating = element.find_element(
             By.CSS_SELECTOR, "div[data-testid='hero-rating-bar__aggregate-rating']"
@@ -113,7 +102,7 @@ class ImdbPageCrawler(PageCrawler):
         return rating
 
     def get_entry(self, url, name="") -> dict:
-        entry_dict = {"ImdbID": ImdbPageCrawler._get_id(url), "Name": name}
+        entry_dict = {"ID": ImdbPageCrawler._get_id(url), "Name": name}
         self._driver.get(url)
         elements = self._driver.find_elements(By.TAG_NAME, "section")
         for e in elements:

@@ -14,7 +14,7 @@ from datetime import datetime
 
 NUM_CRAWLERS = 4
 FIELD_NAMES = [
-    "ImdbID",
+    "ID",
     "Name",
     "Runtime",
     "ReleaseDate",
@@ -134,7 +134,7 @@ class ImdbPageCrawler:
         self.__driver = ImdbPageCrawler.get_new_driver()
 
     def get_entry(self, url, name=""):
-        entry_dict = {"ImdbID": ImdbPageCrawler.get_id(url), "Name": name}
+        entry_dict = {"ID": ImdbPageCrawler.get_id(url), "Name": name}
         self.__driver.get(url)
         elements = self.__driver.find_elements(By.TAG_NAME, "section")
         for e in elements:

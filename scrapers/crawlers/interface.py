@@ -3,9 +3,10 @@ from abc import ABC, abstractmethod
 
 
 class PageCrawler(ABC):
+    FIELD_NAMES: list[str] = []
+
     def __init__(self):
         self._driver = FireFoxDriver()
-        self.field_names: list[str] = []
 
     @abstractmethod
     def _get_id(url: str) -> str:
