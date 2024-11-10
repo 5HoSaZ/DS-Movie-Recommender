@@ -1,2 +1,3 @@
 drivers/firefox/geckodriver.exe
-database/movie_links copy.csv
+*backup
+*database

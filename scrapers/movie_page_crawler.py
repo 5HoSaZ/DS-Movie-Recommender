@@ -2,12 +2,15 @@ from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.common.by import By
+
+import os
 import time
-from datetime import datetime
-import csv
-import pandas as pd
 import threading
 from queue import Queue
+import math
+import csv
+import pandas as pd
+from datetime import datetime
 
 NUM_CRAWLERS = 4
 FIELD_NAMES = [
@@ -27,6 +30,8 @@ FIELD_NAMES = [
 
 class ImdbPageCrawler:
     def data_wrapper(func):
+        """Wrapper for data extraction fallback."""
+
         def inner(*args, **kwargs):
             try:
                 return func(*args, **kwargs)
@@ -60,7 +65,6 @@ class ImdbPageCrawler:
         casts = element.find_elements(
             By.CSS_SELECTOR, "a[class='sc-cd7dc4b7-1 kVdWAO']"
         )
-
         return [c.text for c in casts]
 
     @data_wrapper
@@ -127,10 +131,7 @@ class ImdbPageCrawler:
         return languages
 
     def __init__(self):
-        self.__option = FirefoxOptions()
-        self.__option.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-        self.__service = Service(executable_path="./drivers/firefox/geckodriver.exe")
-        self.__driver = webdriver.Firefox(service=self.__service, options=self.__option)
+        self.__driver = ImdbPageCrawler.get_new_driver()
 
     def get_entry(self, url, name=""):
         entry_dict = {"ImdbID": ImdbPageCrawler.get_id(url), "Name": name}
@@ -153,7 +154,19 @@ class ImdbPageCrawler:
                         entry_dict["Languages"] = ImdbPageCrawler.get_languages(e)
         return entry_dict
 
+    def get_new_driver():
+        option = FirefoxOptions()
+        option.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+        service = Service(executable_path="./drivers/firefox/geckodriver.exe")
+        return webdriver.Firefox(service=service, options=option)
+
+    def restart(self):
+        """Get a new driver"""
+        self.terminate()
+        self.__driver = ImdbPageCrawler.get_new_driver()
+
     def terminate(self):
+        """Terminate the crawler."""
         self.__driver.quit()
 
 
@@ -178,12 +191,17 @@ class Worker:
         for _, row in items.iterrows():
             name, link = row["Name"], row["Link"]
             success = False
+            attempt = 0
             while not success:
                 try:
                     entry = self.crawler.get_entry(link, name)
                     success = True
                 except Exception:
-                    time.sleep(8)
+                    attempt += 1
+                    time.sleep(attempt)
+                    if attempt > 10:
+                        self.crawler.restart()
+                        attempt = 0
             self.queue.put_nowait(entry)
         self.finish()
 
@@ -216,20 +234,28 @@ class Collector:
         print()
 
 
+def filter_processed():
+    all_links = pd.read_csv("./database/movie_links.csv")
+    all_id = all_links["Link"].apply(ImdbPageCrawler.get_id)
+    processed_id = pd.read_csv("./database/movie_entries.csv")["ImdbID"]
+    not_processed_id = set(all_id) - set(processed_id)
+    return all_links.loc[all_id.isin(not_processed_id)]
+
+
 def split_dataframe(df, n):
     data_size = len(df)
-    chunk_size = data_size // n
+    chunk_size = math.ceil(data_size / n)
     return [df.iloc[i : i + chunk_size] for i in range(0, data_size, chunk_size)]
 
 
 def main():
     print(f"Crawling with {NUM_CRAWLERS} crawlers.")
-    # if not os.path.isfile("./database/movie_entries.csv"):
-    with open("./database/movie_entries.csv", "w") as writefile:
-        writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
-        writer.writeheader()
+    if not os.path.isfile("./database/movie_entries.csv"):
+        with open("./database/movie_entries.csv", "w") as writefile:
+            writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
+            writer.writeheader()
 
-    to_process = pd.read_csv("./database/movie_links.csv", encoding="latin-1")
+    to_process = filter_processed()
     to_process_count = len(to_process)
     batches = split_dataframe(to_process, NUM_CRAWLERS)
 

@@ -4,7 +4,6 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.common.by import By
 import time
 import math
-import pandas as pd
 import csv
 
 FIELD_NAMES = ["Index", "Name", "Link"]
