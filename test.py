@@ -23,3 +23,5 @@ from scrapers.crawlers import get_crawler
 
 if __name__ == "__main__":
     a = get_crawler("imdb")
+    print(a.get_entry("https://www.imdb.com/title/tt3469798/", "Órbita 9"))
+    a.terminate()

@@ -157,7 +157,7 @@ class ImdbPageCrawler:
     def get_new_driver():
         option = FirefoxOptions()
         option.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-        service = Service(executable_path="./drivers/firefox/geckodriver.exe")
+        service = Service(executable_path="./scrapers/drivers/geckodriver.exe")
         return webdriver.Firefox(service=service, options=option)
 
     def restart(self):

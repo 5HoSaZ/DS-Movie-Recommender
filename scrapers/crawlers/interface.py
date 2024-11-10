@@ -1,45 +1,46 @@
-from ..driver import FireFoxDriver
+from ..drivers import FireFoxDriver
 from abc import ABC, abstractmethod
 
 
 class PageCrawler(ABC):
     def __init__(self):
-        self.__driver = FireFoxDriver()
+        self._driver = FireFoxDriver()
+        self.field_names: list[str] = []
 
     @abstractmethod
-    def get_id(url: str) -> str:
+    def _get_id(url: str) -> str:
         pass
 
     @abstractmethod
-    def get_directors(element) -> list[str]:
+    def _get_directors(element) -> list[str]:
         pass
 
     @abstractmethod
-    def get_cast(element) -> list[str]:
+    def _get_cast(element) -> list[str]:
         pass
 
     @abstractmethod
-    def get_plot(element) -> str:
+    def _get_plot(element) -> str:
         pass
 
     @abstractmethod
-    def get_run_time(element) -> str:
+    def _get_run_time(element) -> str:
         pass
 
     @abstractmethod
-    def get_genres(element) -> list[str]:
+    def _get_genres(element) -> list[str]:
         pass
 
     @abstractmethod
-    def get_release_date(element) -> str:
+    def _get_release_date(element) -> str:
         pass
 
     @abstractmethod
-    def get_origins(element) -> list[str]:
+    def _get_origins(element) -> list[str]:
         pass
 
     @abstractmethod
-    def get_languages(element) -> list[str]:
+    def _get_languages(element) -> list[str]:
         pass
 
     @abstractmethod
@@ -49,8 +50,8 @@ class PageCrawler(ABC):
     def restart(self):
         """Get a new driver"""
         self.terminate()
-        self.__driver = FireFoxDriver()
+        self._driver = FireFoxDriver()
 
     def terminate(self):
         """Terminate the crawler."""
-        self.__driver.quit()
+        self._driver.quit()
