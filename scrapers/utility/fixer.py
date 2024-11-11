@@ -8,8 +8,7 @@ def filter_null():
     f_data.to_csv("./database/imdb/movie_entries.csv", index=False)
     print("Done")
 
-
-if __name__ == "__main__":
+def fix_encoding()
     links = pd.read_csv("./backup/imdb/movie_links copy.csv", encoding="utf-8")
     print(len(links))
     mapping = {
@@ -27,4 +26,6 @@ if __name__ == "__main__":
     entries.to_csv(
         "./backup/imdb/movie_entries copy.csv", encoding="utf-8", index=False
     )
-    # print(mapping)
+
+if __name__ == "__main__":
+    fix_encoding()
