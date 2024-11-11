@@ -8,7 +8,7 @@ import csv
 import pickle
 
 website = "imdb"
-NUM_CRAWLERS = 3
+NUM_CRAWLERS = 1
 FIELD_NAMES = get_field_names(website)
 TEMP = "./tmp"
 TARGET = f"./database/{website}/movie_entries.csv"

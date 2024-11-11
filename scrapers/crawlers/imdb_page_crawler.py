@@ -1,8 +1,7 @@
-from .interface import PageCrawler
+from .interface import PageCrawler, By
 from ..utility.data import get_id, get_field_names
 from ..utility.wrapper import data_fallback
 
-from selenium.webdriver.common.by import By
 from datetime import datetime
 
 
