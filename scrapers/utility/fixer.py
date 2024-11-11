@@ -27,7 +27,7 @@ def fix_encoding():
 
     entries = pd.read_csv("./database/imdb/movie_entries.csv", encoding="utf-8")
     entries["Name"] = entries.apply(lambda row: replace(row), axis=1)
-    entries.to_csv("./backup/imdb/movie_entries.csv", encoding="utf-8", index=False)
+    entries.to_csv("./database/imdb/movie_entries.csv", encoding="utf-8", index=False)
 
 
 if __name__ == "__main__":

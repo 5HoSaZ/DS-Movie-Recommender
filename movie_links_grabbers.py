@@ -1,6 +1,4 @@
-from selenium import webdriver
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from scrapers.drivers import FireFoxDriver
 from selenium.webdriver.common.by import By
 import time
 import math
@@ -14,10 +12,7 @@ class ImdbLinkGrabber:
     item_index = 0
 
     def __init__(self):
-        self.__option = FirefoxOptions()
-        self.__option.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-        self.__service = Service(executable_path="./scrapers/drivers/geckodriver.exe")
-        self.__driver = webdriver.Firefox(service=self.__service, options=self.__option)
+        self.__driver = FireFoxDriver()
 
     # Get the total of movie found
     def __get_movie_count(self) -> int:

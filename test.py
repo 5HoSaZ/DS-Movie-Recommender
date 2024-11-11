@@ -1,4 +1,4 @@
-from scrapers.movie_links_grabbers import ImdbLinkGrabber
+from movie_links_grabbers import ImdbLinkGrabber
 
 
 grabber = ImdbLinkGrabber()
