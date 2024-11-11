@@ -7,6 +7,7 @@ import math
 import csv
 
 FIELD_NAMES = ["Index", "Name", "Link"]
+total_count = 0
 
 
 class ImdbLinkGrabber:
@@ -61,10 +62,12 @@ class ImdbLinkGrabber:
         self.__driver.quit()
 
     def grab_links(self, url) -> list[dict]:
+        global total_count
         # Connect to url
         self.__driver.get(url)
         movie_count = self.__get_movie_count()
-        print(f"Scraper found {movie_count} movies from {url}.")
+        total_count += movie_count
+        print(f"Scraper found {movie_count} movies from {url} (total {total_count}).")
         # Loading movies
         for i in range(load_count := (math.ceil(movie_count / 50) - 1)):
             print(f"Loading items: {i + 1}/{load_count}", end="\r")

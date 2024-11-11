@@ -8,8 +8,9 @@ def filter_null():
     f_data.to_csv("./database/imdb/movie_entries.csv", index=False)
     print("Done")
 
-def fix_encoding()
-    links = pd.read_csv("./backup/imdb/movie_links copy.csv", encoding="utf-8")
+
+def fix_encoding():
+    links = pd.read_csv("./database/imdb/movie_links.csv", encoding="utf-8")
     print(len(links))
     mapping = {
         row["Link"]
@@ -19,13 +20,15 @@ def fix_encoding()
     }
 
     def replace(row):
-        return mapping[row["ID"]]
+        if row["ID"] in mapping:
+            return mapping[row["ID"]]
+        else:
+            return row["ID"]
 
-    entries = pd.read_csv("./backup/imdb/movie_entries copy.csv", encoding="utf-8")
+    entries = pd.read_csv("./database/imdb/movie_entries.csv", encoding="utf-8")
     entries["Name"] = entries.apply(lambda row: replace(row), axis=1)
-    entries.to_csv(
-        "./backup/imdb/movie_entries copy.csv", encoding="utf-8", index=False
-    )
+    entries.to_csv("./backup/imdb/movie_entries.csv", encoding="utf-8", index=False)
+
 
 if __name__ == "__main__":
     fix_encoding()
