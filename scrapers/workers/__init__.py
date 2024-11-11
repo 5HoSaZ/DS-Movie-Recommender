@@ -2,6 +2,7 @@ from ..utility.wrapper import threaded
 from ..crawlers import PageCrawler
 from ..utility.data import MovieLinkGenerator
 
+from threading import Thread
 from typing import Callable
 from queue import Queue as WorkQueue
 import time
@@ -18,7 +19,7 @@ class Extractor:
         self.queue.put_nowait(None)
 
     @threaded
-    def process(self, items: MovieLinkGenerator):
+    def process(self, items: MovieLinkGenerator) -> Thread:
         for item in items:
             success = False
             attempt = 0
@@ -51,14 +52,14 @@ class Collector:
         self.callback = callback
 
     @threaded
-    def process(self):
+    def process(self) -> Thread:
         count = 0
         while self.unfinished:
             entry = self.queue.get()
             if entry is None:
                 self.unfinished -= 1
             else:
-                self.callback(entry)
+                self.callback(count, entry)
                 count += 1
                 print(
                     f"Processed {count}/{self.item_count} - {(count / self.item_count):.2%}",

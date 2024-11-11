@@ -15,7 +15,7 @@ class ImdbLinkGrabber:
     def __init__(self):
         self.__option = FirefoxOptions()
         self.__option.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-        self.__service = Service(executable_path="./drivers/firefox/geckodriver.exe")
+        self.__service = Service(executable_path="./scrapers/drivers/geckodriver.exe")
         self.__driver = webdriver.Firefox(service=self.__service, options=self.__option)
 
     # Get the total of movie found
@@ -91,19 +91,19 @@ class ImdbLinkGrabber:
 
 
 def write(items: list[dict]):
-    with open("./database/movie_links.csv", "a") as writefile:
+    with open("./database/imdb/movie_links.csv", "a", encoding="utf-8") as writefile:
         writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
         writer.writerows(items)
 
 
 def main():
-    with open("./database/movie_links.csv", "w") as writefile:
+    with open("./database/imdb/movie_links.csv", "w", encoding="utf-8") as writefile:
         writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
         writer.writeheader()
 
     grabber = ImdbLinkGrabber()
-    # year_range = range(2024, 1910, -1)
-    year_range = range(1912, 1910, -1)
+    year_range = range(2024, 1910, -1)
+    # year_range = range(1975, 1974, -1)
     # Search strategy:
     # Release date: ___ - 10-2024, DESC
     # Rating: 1.0 - 10.0
@@ -111,10 +111,11 @@ def main():
     for year in year_range:
         search_range = f"{year}-01-01,{year}-12-31"
         min_vote = 1000
-        print(f"Search range: {search_range}")
+        print(f"Search range: {search_range}, Min vote: {min_vote}")
         url = f"https://www.imdb.com/search/title/?title_type=feature&release_date={search_range}&user_rating=1,10&num_votes={min_vote},&sort=release_date,desc"
         items = grabber.grab_links(url)
         write(items)
+    grabber.terminate()
     print("Done")
 
 

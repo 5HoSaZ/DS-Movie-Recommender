@@ -72,6 +72,14 @@ class ImdbPageCrawler(PageCrawler):
             except ValueError:
                 continue
 
+    @data_fallback(None)
+    def _get_release_date_fallback(element) -> str:
+        date = element.find_element(
+            By.CSS_SELECTOR,
+            "ul[class='ipc-inline-list ipc-inline-list--show-dividers sc-ec65ba05-2 joVhBE baseAlt']",
+        ).text.split("\n")[0]
+        return date
+
     @data_fallback([])
     def _get_origins(element) -> list[str]:
         origin_field = element.find_element(
@@ -105,6 +113,7 @@ class ImdbPageCrawler(PageCrawler):
         entry_dict = {"ID": ImdbPageCrawler._get_id(url), "Name": name}
         self._driver.get(url)
         elements = self._driver.find_elements(By.TAG_NAME, "section")
+        rdate_fallback = None
         for e in elements:
             if attr := e.get_attribute("data-testid"):
                 match attr:
@@ -114,10 +123,13 @@ class ImdbPageCrawler(PageCrawler):
                         entry_dict["Genres"] = ImdbPageCrawler._get_genres(e)
                         entry_dict["Runtime"] = ImdbPageCrawler._get_run_time(e)
                         entry_dict["Directors"] = ImdbPageCrawler._get_directors(e)
+                        rdate_fallback = ImdbPageCrawler._get_release_date_fallback(e)
                     case "title-cast":
                         entry_dict["Cast"] = ImdbPageCrawler._get_cast(e)
                     case "Details":
-                        entry_dict["ReleaseDate"] = ImdbPageCrawler._get_release_date(e)
+                        entry_dict["ReleaseDate"] = (
+                            ImdbPageCrawler._get_release_date(e) or rdate_fallback
+                        )
                         entry_dict["OriginCountries"] = ImdbPageCrawler._get_origins(e)
                         entry_dict["Languages"] = ImdbPageCrawler._get_languages(e)
         return entry_dict

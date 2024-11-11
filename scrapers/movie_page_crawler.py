@@ -251,7 +251,7 @@ def split_dataframe(df, n):
 def main():
     print(f"Crawling with {NUM_CRAWLERS} crawlers.")
     if not os.path.isfile("./database/movie_entries.csv"):
-        with open("./database/movie_entries.csv", "w") as writefile:
+        with open("./database/movie_entries.csv", "w", encoding="utf-8") as writefile:
             writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
             writer.writeheader()
 

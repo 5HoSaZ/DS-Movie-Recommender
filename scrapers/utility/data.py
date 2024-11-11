@@ -69,9 +69,11 @@ def get_id(website: Literal["imdb", "moviedb", "rotten_tomatoes"]) -> Callable:
 
 def filter_processed(website: Literal["imdb", "moviedb", "rotten_tomatoes"]):
     """Return the unprocessed dataset."""
-    all_links = pd.read_csv(f"./database/{website}/movie_links.csv")
+    all_links = pd.read_csv(f"./database/{website}/movie_links.csv", encoding="utf-8")
     all_id = all_links["Link"].apply(get_id(website))
-    processed_id = pd.read_csv(f"./database/{website}/movie_entries.csv")["ID"]
+    processed_id = pd.read_csv(
+        f"./database/{website}/movie_entries.csv", encoding="utf-8"
+    )["ID"]
     not_processed_id = set(all_id) - set(processed_id)
     return all_links.loc[all_id.isin(not_processed_id)]
 

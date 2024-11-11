@@ -21,6 +21,6 @@ def threaded(func: Callable):
     """Wrapper for multi-threading."""
 
     def inner(*args, **kwargs):
-        threading.Thread(target=func, args=args, kwargs=kwargs).start()
+        return threading.Thread(target=func, args=args, kwargs=kwargs)
 
     return inner
