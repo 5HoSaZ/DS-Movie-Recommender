@@ -19,7 +19,7 @@ class ImdbPageCrawler(PageCrawler):
         )
         director_field = cast_field.find_elements(
             By.CSS_SELECTOR,
-            "li[class='ipc-metadata-list__item']",
+            "div[class='ipc-metadata-list-item__content-container']",
         )[0]
         directors = director_field.find_elements(
             By.CSS_SELECTOR,
