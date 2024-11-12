@@ -1,8 +1,9 @@
-from .interface import PageCrawler, By
+from .interface import PageCrawler
 from ..utility.data import get_id, get_field_names
 from ..utility.wrapper import data_fallback
 
 from datetime import datetime
+from selenium.webdriver.common.by import By
 
 
 class ImdbPageCrawler(PageCrawler):

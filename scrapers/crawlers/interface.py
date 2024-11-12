@@ -1,7 +1,6 @@
 from ..drivers import FireFoxDriver
 
 from abc import ABC, abstractmethod
-from selenium.webdriver.common.by import By
 
 
 class PageCrawler(ABC):

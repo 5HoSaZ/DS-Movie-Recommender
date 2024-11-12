@@ -1,10 +1,7 @@
-from movie_links_grabbers import ImdbLinkGrabber
+from scrapers.crawlers import get_crawler
 
+crarw = get_crawler("imdb")
 
-grabber = ImdbLinkGrabber()
-links = grabber.grab_links(
-    "https://www.imdb.com/search/title/?title_type=feature&release_date=1975-01-01,1975-12-31&user_rating=1,10&num_votes=1000,&sort=release_date,desc"
-)
-grabber.terminate()
-for l in links:
-    print(l["Name"])
+e = crarw.get_entry("https://www.imdb.com/title/tt1288461/")
+print(e["Directors"])
+crarw.terminate()

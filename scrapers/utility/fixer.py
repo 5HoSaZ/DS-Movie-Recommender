@@ -31,4 +31,11 @@ def fix_encoding():
 
 
 if __name__ == "__main__":
-    fix_encoding()
+    data = pd.read_csv("./database/imdb/movie_entries.csv", encoding="utf-8")
+
+    def is_not_ascii(v: str):
+        return not v.isascii()
+
+    f_data = data[~(data["Directors"].isin(["[]"]))]
+    f_data.to_csv("./database/imdb/movie_entries.csv", encoding="utf-8", index=False)
+    print(len(data), "-->", len(f_data))
