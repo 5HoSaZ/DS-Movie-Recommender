@@ -1,6 +1,6 @@
 from ..utility.wrapper import threaded
 from ..crawlers import PageCrawler
-from ..utility.data import MovieLinkGenerator
+from ..utility.data import MovieIDGenerator
 
 from threading import Thread
 from typing import Callable
@@ -19,14 +19,20 @@ class Extractor:
         self.queue.put_nowait(None)
 
     @threaded
-    def process(self, items: MovieLinkGenerator) -> Thread:
+    def process(self, items: MovieIDGenerator) -> Thread:
+        interupted = False
         for item in items:
+            if interupted:
+                break
             success = False
             attempt = 0
             while not success:
                 try:
-                    entry = self.crawler.get_entry(item.Link, item.Name)
+                    entry = self.crawler.get_entry(item.ID)
                     success = True
+                except KeyboardInterrupt:
+                    interupted = True
+                    break
                 except Exception:
                     attempt += 1
                     time.sleep(attempt)

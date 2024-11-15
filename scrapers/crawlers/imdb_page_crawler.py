@@ -1,5 +1,6 @@
 from .interface import PageCrawler
-from ..utility.data import get_id, get_field_names
+from ..drivers import FireFoxDriver
+from ..utility.data import get_field_names
 from ..utility.wrapper import data_fallback
 
 from datetime import datetime
@@ -9,8 +10,31 @@ from selenium.webdriver.common.by import By
 class ImdbPageCrawler(PageCrawler):
     FIELD_NAMES = get_field_names("imdb")
 
-    def _get_id(url) -> str:
-        return get_id("imdb")(url)
+    def __init__(self):
+        self._driver = FireFoxDriver()
+
+    def restart(self):
+        """Restart the driver."""
+        self.terminate()
+        self._driver = FireFoxDriver()
+
+    def terminate(self) -> None:
+        """Terminate the driver."""
+        self._driver.close()
+
+    @data_fallback(None)
+    def get_imdb_rating(element) -> str:
+        rating = element.find_element(
+            By.CSS_SELECTOR, "div[data-testid='hero-rating-bar__aggregate-rating']"
+        ).text.split("\n")[1]
+        return rating
+
+    @data_fallback(None)
+    def get_vote_count(element) -> str:
+        rating = element.find_element(
+            By.CSS_SELECTOR, "div[data-testid='hero-rating-bar__aggregate-rating']"
+        ).text.split("\n")[-1]
+        return rating
 
     @data_fallback([])
     def _get_directors(element) -> list[str]:
@@ -46,8 +70,13 @@ class ImdbPageCrawler(PageCrawler):
             By.CSS_SELECTOR,
             "ul[class='ipc-inline-list ipc-inline-list--show-dividers sc-ec65ba05-2 joVhBE baseAlt']",
         ).text.split("\n")[-1]
-        runtime = datetime.strptime(runtime, "%Hh %Mm")
-        return runtime.strftime("%H:%M:%S")
+        formats = ["%Hh %Mm", "%Hh", "%Mm"]
+        for format in formats:
+            try:
+                runtime = datetime.strptime(runtime, format)
+                return runtime.strftime("%H:%M:%S")
+            except ValueError:
+                continue
 
     @data_fallback([])
     def _get_genres(element) -> list[str]:
@@ -60,7 +89,7 @@ class ImdbPageCrawler(PageCrawler):
     @data_fallback(None)
     def _get_release_date(element) -> str:
         formats = ["%B %d, %Y", "%B %Y", "%Y"]
-        rformats = ["%Y-%m-%d", "%B %Y", "%Y"]
+        rformats = ["%Y-%m-%d", "%Y-%m", "%Y"]
         date = element.find_element(
             By.CSS_SELECTOR, "li[data-testid='title-details-releasedate']"
         ).text.split("\n")[-1]
@@ -73,12 +102,14 @@ class ImdbPageCrawler(PageCrawler):
                 continue
 
     @data_fallback(None)
-    def _get_release_date_fallback(element) -> str:
-        date = element.find_element(
+    def _get_rdate_fallback(element) -> str:
+        items: list[str] = element.find_element(
             By.CSS_SELECTOR,
             "ul[class='ipc-inline-list ipc-inline-list--show-dividers sc-ec65ba05-2 joVhBE baseAlt']",
-        ).text.split("\n")[0]
-        return date
+        ).text.split("\n")
+        for item in items:
+            if item.isdecimal():
+                return item
 
     @data_fallback([])
     def _get_origins(element) -> list[str]:
@@ -102,16 +133,9 @@ class ImdbPageCrawler(PageCrawler):
         languages = [lang.text for lang in languages]
         return languages
 
-    @data_fallback(None)
-    def get_imdb_rating(element) -> str:
-        rating = element.find_element(
-            By.CSS_SELECTOR, "div[data-testid='hero-rating-bar__aggregate-rating']"
-        ).text.split("\n")[1]
-        return rating
-
-    def get_entry(self, url, name="") -> dict:
-        entry_dict = {"ID": ImdbPageCrawler._get_id(url), "Name": name}
-        self._driver.get(url)
+    def get_entry(self, imdb_id: int) -> dict:
+        entry_dict = {"ImdbID": imdb_id}
+        self._driver.get(f"https://www.imdb.com/title/tt{imdb_id:07d}")
         elements = self._driver.find_elements(By.TAG_NAME, "section")
         rdate_fallback = None
         for e in elements:
@@ -120,10 +144,11 @@ class ImdbPageCrawler(PageCrawler):
                     case "atf-wrapper-bg":
                         entry_dict["Plot"] = ImdbPageCrawler._get_plot(e)
                         entry_dict["Rating"] = ImdbPageCrawler.get_imdb_rating(e)
+                        entry_dict["VoteCount"] = ImdbPageCrawler.get_vote_count(e)
                         entry_dict["Genres"] = ImdbPageCrawler._get_genres(e)
                         entry_dict["Runtime"] = ImdbPageCrawler._get_run_time(e)
                         entry_dict["Directors"] = ImdbPageCrawler._get_directors(e)
-                        rdate_fallback = ImdbPageCrawler._get_release_date_fallback(e)
+                        rdate_fallback = ImdbPageCrawler._get_rdate_fallback(e)
                     case "title-cast":
                         entry_dict["Cast"] = ImdbPageCrawler._get_cast(e)
                     case "Details":
