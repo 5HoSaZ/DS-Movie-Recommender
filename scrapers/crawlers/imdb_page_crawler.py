@@ -11,26 +11,24 @@ class ImdbPageCrawler(PageCrawler):
     FIELD_NAMES = get_field_names("imdb")
 
     def __init__(self):
-        self._driver = FireFoxDriver()
+        self.__driver = FireFoxDriver()
 
     def restart(self):
-        """Restart the driver."""
         self.terminate()
-        self._driver = FireFoxDriver()
+        self.__driver = FireFoxDriver()
 
     def terminate(self) -> None:
-        """Terminate the driver."""
-        self._driver.close()
+        self.__driver.close()
 
     @data_fallback(None)
-    def get_imdb_rating(element) -> str:
+    def _get_rating(element) -> str:
         rating = element.find_element(
             By.CSS_SELECTOR, "div[data-testid='hero-rating-bar__aggregate-rating']"
         ).text.split("\n")[1]
         return rating
 
     @data_fallback(None)
-    def get_vote_count(element) -> str:
+    def _get_vote_count(element) -> str:
         rating = element.find_element(
             By.CSS_SELECTOR, "div[data-testid='hero-rating-bar__aggregate-rating']"
         ).text.split("\n")[-1]
@@ -135,16 +133,16 @@ class ImdbPageCrawler(PageCrawler):
 
     def get_entry(self, imdb_id: int) -> dict:
         entry_dict = {"ImdbID": imdb_id}
-        self._driver.get(f"https://www.imdb.com/title/tt{imdb_id:07d}")
-        elements = self._driver.find_elements(By.TAG_NAME, "section")
+        self.__driver.get(f"https://www.imdb.com/title/tt{imdb_id:07d}")
+        elements = self.__driver.find_elements(By.TAG_NAME, "section")
         rdate_fallback = None
         for e in elements:
             if attr := e.get_attribute("data-testid"):
                 match attr:
                     case "atf-wrapper-bg":
                         entry_dict["Plot"] = ImdbPageCrawler._get_plot(e)
-                        entry_dict["Rating"] = ImdbPageCrawler.get_imdb_rating(e)
-                        entry_dict["VoteCount"] = ImdbPageCrawler.get_vote_count(e)
+                        entry_dict["Rating"] = ImdbPageCrawler._get_rating(e)
+                        entry_dict["VoteCount"] = ImdbPageCrawler._get_vote_count(e)
                         entry_dict["Genres"] = ImdbPageCrawler._get_genres(e)
                         entry_dict["Runtime"] = ImdbPageCrawler._get_run_time(e)
                         entry_dict["Directors"] = ImdbPageCrawler._get_directors(e)

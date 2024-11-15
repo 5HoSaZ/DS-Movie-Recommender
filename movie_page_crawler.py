@@ -10,7 +10,7 @@ import pickle
 import time
 import math
 
-website = "imdb"
+website = "tmdb"
 NUM_CRAWLERS = 5
 BATCH_SIZE = 200
 FIELD_NAMES = get_field_names(website)
@@ -43,7 +43,7 @@ def main():
             writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
             writer.writeheader()
 
-    to_process = filter_processed(website).iloc[:1000]
+    to_process = filter_processed(website).iloc[:200]
     batch_count = math.ceil(len(to_process) / BATCH_SIZE)
 
     work_queue = WorkQueue()

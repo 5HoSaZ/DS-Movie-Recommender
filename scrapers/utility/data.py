@@ -4,7 +4,7 @@ from typing import Literal, Iterable, Generator, Any
 from collections import namedtuple
 
 
-def get_field_names(website: Literal["imdb", "moviedb"]) -> list[str]:
+def get_field_names(website: Literal["imdb", "tmdb"]) -> list[str]:
     match website:
         case "imdb":
             return [
