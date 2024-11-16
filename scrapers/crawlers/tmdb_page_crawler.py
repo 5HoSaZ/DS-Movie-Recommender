@@ -1,30 +1,14 @@
 from .interface import PageCrawler
+from ..drivers import Requester
 from ..utility.data import get_field_names
 from ..utility.wrapper import data_fallback
-
-import os
-import json
-import requests
 
 
 class TmdbPageCrawler(PageCrawler):
     FIELD_NAMES = get_field_names("tmdb")
 
     def __init__(self):
-        self.__api_key = self.__get_api_key()
-        self.__header = {
-            "accept": "application/json",
-            "Authorization": f"Bearer {self.__api_key}",
-        }
-
-    def __get_api_key(self):
-        api_path = "./scrapers/drivers/apikey/moviedb.txt"
-        if not os.path.isfile(api_path):
-            api_key = input("Input tmdb apikey: ")
-            with open(api_path, "w") as file:
-                file.write(api_key)
-        with open(api_path, "r") as file:
-            return file.readline()
+        self.__requester = Requester()
 
     def restart(self) -> None:
         return
@@ -81,7 +65,7 @@ class TmdbPageCrawler(PageCrawler):
     def get_entry(self, tmdb_id: int) -> dict:
         entry_dict = {"TmdbID": tmdb_id}
         url = f"https://api.themoviedb.org/3/movie/{tmdb_id}?append_to_response=credits&language=en-US"
-        response = json.loads(requests.get(url, headers=self.__header).text)
+        response = self.__requester.get(url)
         entry_dict["Rating"] = TmdbPageCrawler._get_rating(response)
         entry_dict["VoteCount"] = TmdbPageCrawler._get_vote_count(response)
         entry_dict["Runtime"] = TmdbPageCrawler._get_run_time(response)

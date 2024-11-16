@@ -2,8 +2,9 @@ from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
-import requests
+import os
 import json
+import requests
 
 
 class FireFoxDriver(webdriver.Firefox):
@@ -18,19 +19,22 @@ class FireFoxDriver(webdriver.Firefox):
 
 
 class Requester:
-    def __init__(self, api_key: str):
-        self.header = {
+    def __init__(self):
+        self.__api_key = self.__get_api_key()
+        self.__header = {
             "accept": "application/json",
-            "Authorization": f"Bearer {api_key}",
+            "Authorization": f"Bearer {self.__api_key}",
         }
 
+    def __get_api_key(self):
+        api_path = "./scrapers/drivers/apikey/moviedb.txt"
+        if not os.path.isfile(api_path):
+            api_key = input("Input tmdb apikey: ")
+            with open(api_path, "w") as file:
+                file.write(api_key)
+        with open(api_path, "r") as file:
+            return file.readline()
+
     def get(self, url: str):
-        response = requests.get(url, headers=self.header)
+        response = requests.get(url, headers=self.__header)
         return json.loads(response.text)
-
-
-if __name__ == "__main__":
-    api_key = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YWQ5YjkzZjNjMjA4NDE3MTM4YjU4MWViM2RhYmZmNCIsIm5iZiI6MTczMTM3OTI5NS41MjYwOTksInN1YiI6IjY3MzJiZTkyNTc1ZDA2OWQzOWZjNzZmYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.htOfonsD20xG8V1pl0VU9fGQ2mHcpG4-lyiuj2BQqzo"
-    a = Requester(api_key)
-    res = a.get("https://api.themoviedb.org/3/movie/278155?language=en-US")
-    print(res)

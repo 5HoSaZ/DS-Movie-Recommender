@@ -10,11 +10,14 @@ import pickle
 import time
 import math
 
+
+TEMP = "./tmp"
 website = "tmdb"
 NUM_CRAWLERS = 5
-BATCH_SIZE = 200
+BATCH_SIZE = 500
+MAX_ENTRIES = 500
+BACKUP_INTERVAL = 60
 FIELD_NAMES = get_field_names(website)
-TEMP = "./tmp"
 TARGET = f"./database/{website}/movie_entries.csv"
 
 
@@ -43,7 +46,7 @@ def main():
             writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
             writer.writeheader()
 
-    to_process = filter_processed(website).iloc[:200]
+    to_process = filter_processed(website).head(MAX_ENTRIES)
     batch_count = math.ceil(len(to_process) / BATCH_SIZE)
 
     work_queue = WorkQueue()
@@ -51,9 +54,7 @@ def main():
     for batch_idx in range(batch_count):
         print(f"Batch: {batch_idx + 1}/{batch_count}")
         curent_idx = batch_idx * BATCH_SIZE
-        to_process = filter_processed(website).iloc[
-            curent_idx : curent_idx + BATCH_SIZE
-        ]
+        to_process = to_process.iloc[curent_idx : curent_idx + BATCH_SIZE]
         to_process_count = len(to_process)
         batches = split_data(to_process, NUM_CRAWLERS)
 
@@ -71,11 +72,17 @@ def main():
         collect_thread = collector.process()
         collect_thread.start()
 
-        while collect_thread.is_alive():
-            time.sleep(60)
-            dump_to_database()
-        else:
-            dump_to_database()
+        seconds_passed = 0
+        while True:
+            if collect_thread.is_alive():
+                time.sleep(1)
+                seconds_passed += 1
+                if seconds_passed == BACKUP_INTERVAL:
+                    dump_to_database()
+                    seconds_passed = 0
+            else:
+                dump_to_database()
+                break
     print("\nFinished!")
 
 
