@@ -22,13 +22,14 @@ class Extractor:
     def process(self, items: MovieIDGenerator) -> Thread:
         interupted = False
         for item in items:
+            movie_id = item.ID
             if interupted:
                 break
             success = False
             attempt = 0
             while not success:
                 try:
-                    entry = self.crawler.get_entry(item.ID)
+                    entry = self.crawler.get_entry(movie_id)
                     success = True
                 except KeyboardInterrupt:
                     interupted = True

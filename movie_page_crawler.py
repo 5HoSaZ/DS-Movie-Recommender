@@ -14,8 +14,8 @@ import math
 TEMP = "./tmp"
 website = "tmdb"
 NUM_CRAWLERS = 5
-BATCH_SIZE = 500
-MAX_ENTRIES = 500
+BATCH_SIZE = 200
+MAX_ENTRIES = 5000
 BACKUP_INTERVAL = 60
 FIELD_NAMES = get_field_names(website)
 TARGET = f"./database/{website}/movie_entries.csv"
@@ -46,16 +46,17 @@ def main():
             writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
             writer.writeheader()
 
-    to_process = filter_processed(website).head(MAX_ENTRIES)
-    batch_count = math.ceil(len(to_process) / BATCH_SIZE)
+    unprocessed = filter_processed(website)
+    unprocessed = unprocessed.head(min(MAX_ENTRIES, len(unprocessed)))
+    batch_count = math.ceil(len(unprocessed) / BATCH_SIZE)
 
     work_queue = WorkQueue()
-    print(f"Crawling with {NUM_CRAWLERS} crawlers, to process: {len(to_process)}.")
+    print(f"Crawling with {NUM_CRAWLERS} crawlers, to process: {len(unprocessed)}.")
     for batch_idx in range(batch_count):
-        print(f"Batch: {batch_idx + 1}/{batch_count}")
-        curent_idx = batch_idx * BATCH_SIZE
-        to_process = to_process.iloc[curent_idx : curent_idx + BATCH_SIZE]
+        current_idx = batch_idx * BATCH_SIZE
+        to_process = unprocessed.iloc[current_idx : current_idx + BATCH_SIZE]
         to_process_count = len(to_process)
+        print(f"Batch: {batch_idx + 1}/{batch_count}, {to_process_count}")
         batches = split_data(to_process, NUM_CRAWLERS)
 
         for i in range(NUM_CRAWLERS):

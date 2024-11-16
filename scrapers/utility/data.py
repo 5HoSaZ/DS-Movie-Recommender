@@ -2,6 +2,7 @@ import math
 import pandas as pd
 from typing import Literal, Iterable, Generator, Any
 from collections import namedtuple
+import numpy as np
 
 
 def get_field_names(website: Literal["imdb", "tmdb"]) -> list[str]:
@@ -43,10 +44,10 @@ def filter_processed(website: Literal["imdb", "tmdb"]):
     match website:
         case "imdb":
             all_ids = all_links["imdbId"]
-            processed_ids = processed["ImdbID"]
+            processed_ids = set(processed["ImdbID"].values)
         case "tmdb":
             all_ids = all_links["tmdbId"]
-            processed_ids = processed["TmdbID"]
+            processed_ids = set(processed["TmdbID"].values)
     return all_ids.loc[~all_ids.isin(processed_ids)]
 
 
@@ -56,12 +57,16 @@ MovieIDGenerator = Generator[MovieID, Any, None]
 
 def _data_generator(data: Iterable) -> MovieIDGenerator:
     def _from_dataframe(data: pd.DataFrame):
-        for _, row in data.iterrows():
-            yield MovieID(row)
+        for _, movie_id in data.iterrows():
+            if movie_id is None or np.isnan(movie_id):
+                continue
+            yield MovieID(int(movie_id))
 
     def _from_iterable(data: list):
         for movie_id in data:
-            yield MovieID(movie_id)
+            if movie_id is None or np.isnan(movie_id):
+                continue
+            yield MovieID(int(movie_id))
 
     if isinstance(data, pd.DataFrame):
         return _from_dataframe(data)
