@@ -14,8 +14,8 @@ import math
 TEMP = "./tmp"
 website = "tmdb"
 NUM_CRAWLERS = 5
-BATCH_SIZE = 200
-MAX_ENTRIES = 5000
+BATCH_SIZE = 500
+MAX_ENTRIES = 1_000
 BACKUP_INTERVAL = 60
 FIELD_NAMES = get_field_names(website)
 TARGET = f"./database/{website}/movie_entries.csv"
