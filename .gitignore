@@ -4,3 +4,4 @@ drivers/firefox/geckodriver.exe
 *tmp
 notebook.ipynb
 *scrapers/drivers/apikey
+*models
