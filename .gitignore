@@ -2,6 +2,6 @@ drivers/firefox/geckodriver.exe
 *backup
 *database
 *tmp
-notebook.ipynb
+*notebooks
 *scrapers/drivers/apikey
 *models
