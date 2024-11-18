@@ -9,13 +9,15 @@ import csv
 import pickle
 import time
 import math
+import pandas as pd
 
 
 TEMP = "./tmp"
-website = "tmdb"
+website = "imdb"
 NUM_CRAWLERS = 5
-BATCH_SIZE = 500
-MAX_ENTRIES = 1_000
+BATCH_SIZE = 200
+MAX_ENTRIES = float("inf")
+# MAX_ENTRIES = 1_000
 BACKUP_INTERVAL = 60
 FIELD_NAMES = get_field_names(website)
 TARGET = f"./database/{website}/movie_entries.csv"
@@ -36,6 +38,16 @@ def dump_to_database():
                 entry = pickle.load(file)
             writer.writerow(entry)
             os.remove(path)
+
+
+def remove_duplicate():
+    entries = pd.read_csv(TARGET)
+    match website:
+        case "imdb":
+            no_dup = entries.drop_duplicates(subset=["ImdbID"])
+        case "tmdb":
+            no_dup = entries.drop_duplicates(subset=["TmdbID"])
+    no_dup.to_csv(TARGET, index=False)
 
 
 def main():
@@ -94,4 +106,6 @@ if __name__ == "__main__":
         print("\nTerminating...")
         print("Dumping to Database")
         dump_to_database()
+        remove_duplicate()
+        print("Exit")
         sys.exit()
