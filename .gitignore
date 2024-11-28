@@ -2,7 +2,8 @@ drivers/firefox/geckodriver.exe
 *backup
 *database
 *tmp
-*notebooks
 *scrapers/drivers/apikey
 *models
 notebook.ipynb
+knn_on_movies.pkl
+knn_on_users.pkl
