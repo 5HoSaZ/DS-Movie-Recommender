@@ -7,3 +7,5 @@ drivers/firefox/geckodriver.exe
 notebook.ipynb
 knn_on_movies.pkl
 knn_on_users.pkl
+wandb_key.txt
+*wandb

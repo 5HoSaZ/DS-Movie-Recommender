@@ -25,7 +25,7 @@ users = iter([mapper.user_fwd_map[int(u)] for u in users])
 items = iter([mapper.item_fwd_map[int(i)] for i in items])
 print("Start bigraph pruning...")
 valid_users, valid_items = prune_bigraph(
-    a=users, b=items, counts=(num_user, num_item), thresholds=(100, 100)
+    a=users, b=items, counts=(num_user, num_item), thresholds=(500, 500)
 )
 print("Inverse Mapping...")
 valid_users = [mapper.user_inv_map[u] for u in valid_users]
