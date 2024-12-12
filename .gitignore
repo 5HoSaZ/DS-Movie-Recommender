@@ -1,11 +1,10 @@
 drivers/firefox/geckodriver.exe
-*backup
 *database
 *tmp
 *scrapers/drivers/apikey
-*models
 notebook.ipynb
-knn_on_movies.pkl
-knn_on_users.pkl
 wandb_key.txt
 *wandb
+models/cb/*.pt
+models/cf/*.pth
+models/hybrid/*.pth
