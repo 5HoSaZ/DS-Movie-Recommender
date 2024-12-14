@@ -3,6 +3,8 @@ import pandas as pd
 import os
 import numpy as np
 
+USER_THRES = input("Minimum number of users per item: ")
+ITEM_THRES = input("Minimum number of itens per user: ")
 SOURCE_FILE = "./database/merged/full/ratings.csv"
 TARGET_FILE = "./database/merged/small/ratings.csv"
 SOURCE_MAPPER_FILE = "./database/merged/full/pydata/mapper.pkl"
