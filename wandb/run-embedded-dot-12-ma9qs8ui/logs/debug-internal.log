@@ -1,0 +1,29 @@
+{"time":"2024-12-16T23:07:42.34866122+07:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-12-16T23:07:42.348713469+07:00","level":"INFO","msg":"created symlink","path":"/home/zelinix_window/workspace/movie-recommendation/wandb/run-20241216_230742-ma9qs8ui/logs/debug-core.log"}
+{"time":"2024-12-16T23:07:42.637066556+07:00","level":"INFO","msg":"created new stream","id":"ma9qs8ui"}
+{"time":"2024-12-16T23:07:42.637160786+07:00","level":"INFO","msg":"stream: started","id":"ma9qs8ui"}
+{"time":"2024-12-16T23:07:42.637187341+07:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"ma9qs8ui"}}
+{"time":"2024-12-16T23:07:42.637217013+07:00","level":"INFO","msg":"sender: started","stream_id":"ma9qs8ui"}
+{"time":"2024-12-16T23:07:42.637260876+07:00","level":"INFO","msg":"handler: started","stream_id":{"value":"ma9qs8ui"}}
+{"time":"2024-12-16T23:07:43.442748174+07:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-16T23:07:43.714687148+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T23:07:43.714713238+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T23:08:23.824295276+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T23:08:23.839873189+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T23:08:24.067596055+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T23:08:24.084534797+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T23:08:24.145258496+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T23:08:24.159338046+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T23:08:24.160461774+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T23:08:24.174566814+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-17T01:37:39.860919594+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-17T01:38:38.02171934+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-17T01:38:38.068500609+07:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-17T01:38:38.079172605+07:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-17T01:38:39.072199723+07:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"saving job artifact","runtime_seconds":0.545588491},{"desc":"uploading wandb-summary.json","runtime_seconds":0.494325753,"progress":"3.5KB/3.5KB"},{"desc":"uploading output.log","runtime_seconds":0.271622283,"progress":"2.8KB/2.8KB"},{"desc":"uploading config.yaml","runtime_seconds":0.271609448,"progress":"792B/792B"}],"total_operations":4}}
+{"time":"2024-12-17T01:38:44.309431097+07:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-17T01:38:46.063644224+07:00","level":"INFO","msg":"stream: closing","id":"ma9qs8ui"}
+{"time":"2024-12-17T01:38:46.06368418+07:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"ma9qs8ui"}}
+{"time":"2024-12-17T01:38:46.063813236+07:00","level":"INFO","msg":"sender: closed","stream_id":"ma9qs8ui"}
+{"time":"2024-12-17T01:38:46.063776366+07:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"ma9qs8ui"}}
+{"time":"2024-12-17T01:38:46.064121072+07:00","level":"INFO","msg":"stream: closed","id":"ma9qs8ui"}

@@ -1,0 +1,31 @@
+{"time":"2024-12-07T14:21:38.120123546+07:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-12-07T14:21:38.120206314+07:00","level":"INFO","msg":"created symlink","path":"/home/zelinix_window/workspace/movie-recommendation/wandb/run-20241207_142138-0kcr7hra/logs/debug-core.log"}
+{"time":"2024-12-07T14:21:38.286556432+07:00","level":"INFO","msg":"created new stream","id":"0kcr7hra"}
+{"time":"2024-12-07T14:21:38.28662882+07:00","level":"INFO","msg":"stream: started","id":"0kcr7hra"}
+{"time":"2024-12-07T14:21:38.286726802+07:00","level":"INFO","msg":"sender: started","stream_id":"0kcr7hra"}
+{"time":"2024-12-07T14:21:38.286751995+07:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"0kcr7hra"}}
+{"time":"2024-12-07T14:21:38.286697101+07:00","level":"INFO","msg":"handler: started","stream_id":{"value":"0kcr7hra"}}
+{"time":"2024-12-07T14:21:39.092938717+07:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-07T14:21:39.41662545+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-07T14:21:39.416754055+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-07T14:22:20.476559484+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-07T14:22:20.476652721+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-07T14:22:20.476661277+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-07T14:22:20.490511367+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-07T14:22:21.978891013+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-07T14:22:21.997113769+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-07T14:22:21.998368472+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-07T14:22:22.018203067+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-07T15:07:52.331287512+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dat-tht225482-hust/movie-recommendation-models/0kcr7hra/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2024-12-07T15:48:52.381194598+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dat-tht225482-hust/movie-recommendation-models/0kcr7hra/file_stream\": dial tcp 35.186.228.49:443: connect: connection refused"}
+{"time":"2024-12-07T16:24:02.373727751+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-07T16:24:45.130608742+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-07T16:24:45.136675634+07:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-07T16:24:45.141591046+07:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-07T16:24:46.136472923+07:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"saving job artifact","runtime_seconds":0.475686096},{"desc":"uploading wandb-summary.json","runtime_seconds":0.429757977,"progress":"11.8KB/11.8KB"},{"desc":"uploading config.yaml","runtime_seconds":0.168020765,"progress":"698B/698B"},{"desc":"uploading output.log","runtime_seconds":0.168009985,"progress":"2.8KB/2.8KB"}],"total_operations":4}}
+{"time":"2024-12-07T16:24:46.514443938+07:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-07T16:24:47.99154466+07:00","level":"INFO","msg":"stream: closing","id":"0kcr7hra"}
+{"time":"2024-12-07T16:24:47.991603683+07:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"0kcr7hra"}}
+{"time":"2024-12-07T16:24:47.991683875+07:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"0kcr7hra"}}
+{"time":"2024-12-07T16:24:47.9917549+07:00","level":"INFO","msg":"sender: closed","stream_id":"0kcr7hra"}
+{"time":"2024-12-07T16:24:47.991801038+07:00","level":"INFO","msg":"stream: closed","id":"0kcr7hra"}

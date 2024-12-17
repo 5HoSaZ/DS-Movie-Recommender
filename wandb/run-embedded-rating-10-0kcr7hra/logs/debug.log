@@ -1,0 +1,56 @@
+2024-12-07 14:21:38,111 INFO    MainThread:146517 [wandb_setup.py:_flush():79] Current SDK version is 0.18.5
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_setup.py:_flush():79] Configure stats pid to 146517
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_setup.py:_flush():79] Loading settings from /home/zelinix_window/.config/wandb/settings
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_setup.py:_flush():79] Loading settings from /home/zelinix_window/workspace/movie-recommendation/wandb/settings
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_setup.py:_flush():79] Loading settings from environment variables: {}
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_setup.py:_flush():79] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_setup.py:_flush():79] Applying login settings: {}
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_setup.py:_flush():79] Applying login settings: {}
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_init.py:_log_setup():534] Logging user logs to /home/zelinix_window/workspace/movie-recommendation/wandb/run-20241207_142138-0kcr7hra/logs/debug.log
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_init.py:_log_setup():535] Logging internal logs to /home/zelinix_window/workspace/movie-recommendation/wandb/run-20241207_142138-0kcr7hra/logs/debug-internal.log
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_init.py:_jupyter_setup():480] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7fc90bcb42c0>
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_init.py:init():621] calling init triggers
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_init.py:init():628] wandb.init called with sweep_config: {}
+config: {'dataset': 'merged/full', 'seed': 291124, 'batch_size': 4096, 'epochs': 20, 'num_factor': 10, 'device': 'cuda'}
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_init.py:init():671] starting backend
+2024-12-07 14:21:38,112 INFO    MainThread:146517 [wandb_init.py:init():675] sending inform_init request
+2024-12-07 14:21:38,114 INFO    MainThread:146517 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-12-07 14:21:38,114 INFO    MainThread:146517 [wandb_init.py:init():688] backend started and connected
+2024-12-07 14:21:38,124 INFO    MainThread:146517 [wandb_run.py:_label_probe_notebook():1342] probe notebook
+2024-12-07 14:21:38,125 INFO    MainThread:146517 [wandb_init.py:init():783] updated telemetry
+2024-12-07 14:21:38,227 INFO    MainThread:146517 [wandb_init.py:init():816] communicating run to backend with 90.0 second timeout
+2024-12-07 14:21:39,090 INFO    MainThread:146517 [wandb_init.py:init():867] starting run threads in backend
+2024-12-07 14:21:39,369 INFO    MainThread:146517 [wandb_run.py:_console_start():2463] atexit reg
+2024-12-07 14:21:39,369 INFO    MainThread:146517 [wandb_run.py:_redirect():2311] redirect: wrap_raw
+2024-12-07 14:21:39,369 INFO    MainThread:146517 [wandb_run.py:_redirect():2376] Wrapping output streams.
+2024-12-07 14:21:39,370 INFO    MainThread:146517 [wandb_run.py:_redirect():2401] Redirects installed.
+2024-12-07 14:21:39,373 INFO    MainThread:146517 [wandb_init.py:init():911] run started, returning control to user process
+2024-12-07 14:21:39,377 INFO    MainThread:146517 [jupyter.py:save_ipynb():387] not saving jupyter notebook
+2024-12-07 14:21:39,377 INFO    MainThread:146517 [wandb_init.py:_pause_backend():445] pausing backend
+2024-12-07 14:21:39,401 INFO    MainThread:146517 [wandb_init.py:_resume_backend():450] resuming backend
+2024-12-07 14:22:20,428 INFO    MainThread:146517 [jupyter.py:save_ipynb():387] not saving jupyter notebook
+2024-12-07 14:22:20,428 INFO    MainThread:146517 [wandb_init.py:_pause_backend():445] pausing backend
+2024-12-07 14:22:20,465 INFO    MainThread:146517 [wandb_init.py:_resume_backend():450] resuming backend
+2024-12-07 14:22:20,467 INFO    MainThread:146517 [jupyter.py:save_ipynb():387] not saving jupyter notebook
+2024-12-07 14:22:20,467 INFO    MainThread:146517 [wandb_init.py:_pause_backend():445] pausing backend
+2024-12-07 14:22:20,489 INFO    MainThread:146517 [wandb_init.py:_resume_backend():450] resuming backend
+2024-12-07 14:22:21,978 INFO    MainThread:146517 [wandb_watch.py:_watch():71] Watching
+2024-12-07 14:22:21,978 INFO    MainThread:146517 [jupyter.py:save_ipynb():387] not saving jupyter notebook
+2024-12-07 14:22:21,978 INFO    MainThread:146517 [wandb_init.py:_pause_backend():445] pausing backend
+2024-12-07 14:22:21,996 INFO    MainThread:146517 [wandb_init.py:_resume_backend():450] resuming backend
+2024-12-07 14:22:21,997 INFO    MainThread:146517 [jupyter.py:save_ipynb():387] not saving jupyter notebook
+2024-12-07 14:22:21,998 INFO    MainThread:146517 [wandb_init.py:_pause_backend():445] pausing backend
+2024-12-07 14:22:22,017 INFO    MainThread:146517 [wandb_init.py:_resume_backend():450] resuming backend
+2024-12-07 16:24:02,372 INFO    MainThread:146517 [jupyter.py:save_ipynb():387] not saving jupyter notebook
+2024-12-07 16:24:02,373 INFO    MainThread:146517 [wandb_init.py:_pause_backend():445] pausing backend
+2024-12-07 16:24:45,129 INFO    MainThread:146517 [wandb_init.py:_resume_backend():450] resuming backend
+2024-12-07 16:24:45,131 INFO    MainThread:146517 [wandb_run.py:_finish():2158] finishing run dat-tht225482-hust/movie-recommendation-models/0kcr7hra
+2024-12-07 16:24:45,132 INFO    MainThread:146517 [jupyter.py:save_history():459] not saving jupyter history
+2024-12-07 16:24:45,132 INFO    MainThread:146517 [jupyter.py:save_ipynb():387] not saving jupyter notebook
+2024-12-07 16:24:45,133 INFO    MainThread:146517 [wandb_init.py:_jupyter_teardown():462] cleaning up jupyter logic
+2024-12-07 16:24:45,133 INFO    MainThread:146517 [wandb_run.py:_atexit_cleanup():2426] got exitcode: 0
+2024-12-07 16:24:45,133 INFO    MainThread:146517 [wandb_run.py:_restore():2408] restore
+2024-12-07 16:24:45,134 INFO    MainThread:146517 [wandb_run.py:_restore():2414] restore done
+2024-12-07 16:24:47,979 INFO    MainThread:146517 [wandb_run.py:_footer_history_summary_info():3975] rendering history
+2024-12-07 16:24:47,980 INFO    MainThread:146517 [wandb_run.py:_footer_history_summary_info():4007] rendering summary
+2024-12-07 16:24:47,988 INFO    MainThread:146517 [wandb_run.py:_footer_sync_info():3934] logging synced files

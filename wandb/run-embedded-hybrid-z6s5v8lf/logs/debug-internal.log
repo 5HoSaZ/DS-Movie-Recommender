@@ -1,0 +1,29 @@
+{"time":"2024-12-14T11:09:30.728524145+07:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-12-14T11:09:30.728556958+07:00","level":"INFO","msg":"created symlink","path":"/home/zelinix_window/workspace/movie-recommendation/wandb/run-20241214_110930-z6s5v8lf/logs/debug-core.log"}
+{"time":"2024-12-14T11:09:30.977285865+07:00","level":"INFO","msg":"created new stream","id":"z6s5v8lf"}
+{"time":"2024-12-14T11:09:30.977343405+07:00","level":"INFO","msg":"stream: started","id":"z6s5v8lf"}
+{"time":"2024-12-14T11:09:30.977410542+07:00","level":"INFO","msg":"sender: started","stream_id":"z6s5v8lf"}
+{"time":"2024-12-14T11:09:30.977380575+07:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"z6s5v8lf"}}
+{"time":"2024-12-14T11:09:30.977426032+07:00","level":"INFO","msg":"handler: started","stream_id":{"value":"z6s5v8lf"}}
+{"time":"2024-12-14T11:09:32.076377902+07:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-14T11:09:32.330033615+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-14T11:09:32.330102115+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-14T11:10:16.105590854+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-14T11:10:17.099947206+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-14T11:10:21.175290665+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-14T11:10:22.100784465+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-14T11:10:22.103619158+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-14T11:10:22.124597787+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-14T11:10:22.125685466+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-14T11:10:22.139740081+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-14T16:41:42.591487642+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-14T16:41:42.644620892+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-14T16:41:42.659923632+07:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-14T16:41:42.671700426+07:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-14T16:41:43.6565355+07:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run config","runtime_seconds":0.318500202}],"total_operations":1}}
+{"time":"2024-12-14T16:41:45.128593163+07:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-14T16:41:46.558895548+07:00","level":"INFO","msg":"stream: closing","id":"z6s5v8lf"}
+{"time":"2024-12-14T16:41:46.559143725+07:00","level":"INFO","msg":"sender: closed","stream_id":"z6s5v8lf"}
+{"time":"2024-12-14T16:41:46.559101058+07:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"z6s5v8lf"}}
+{"time":"2024-12-14T16:41:46.558937067+07:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"z6s5v8lf"}}
+{"time":"2024-12-14T16:41:46.559445479+07:00","level":"INFO","msg":"stream: closed","id":"z6s5v8lf"}

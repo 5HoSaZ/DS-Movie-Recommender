@@ -1,0 +1,33 @@
+{"time":"2024-12-16T21:00:44.708207596+07:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-12-16T21:00:44.708255978+07:00","level":"INFO","msg":"created symlink","path":"/home/zelinix_window/workspace/movie-recommendation/wandb/run-20241216_210044-trpfbega/logs/debug-core.log"}
+{"time":"2024-12-16T21:00:44.982690586+07:00","level":"INFO","msg":"created new stream","id":"trpfbega"}
+{"time":"2024-12-16T21:00:44.982775358+07:00","level":"INFO","msg":"stream: started","id":"trpfbega"}
+{"time":"2024-12-16T21:00:44.982846739+07:00","level":"INFO","msg":"handler: started","stream_id":{"value":"trpfbega"}}
+{"time":"2024-12-16T21:00:44.982819923+07:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"trpfbega"}}
+{"time":"2024-12-16T21:00:44.982892616+07:00","level":"INFO","msg":"sender: started","stream_id":"trpfbega"}
+{"time":"2024-12-16T21:00:45.794849919+07:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-16T21:00:46.124940868+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T21:00:46.128036687+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T21:01:31.955839584+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T21:01:31.999306281+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T21:01:32.00315906+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T21:01:32.018472161+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T21:01:33.706153653+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T21:01:33.721867913+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T21:01:33.723471233+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T21:01:33.739359016+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T21:43:41.569209381+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dat-tht225482-hust/movie-recommendation-models/trpfbega/file_stream\": dial tcp: lookup api.wandb.ai on 10.255.255.254:53: read udp 10.255.255.254:45158->10.255.255.254:53: i/o timeout"}
+{"time":"2024-12-16T22:59:18.725621613+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dat-tht225482-hust/movie-recommendation-models/trpfbega/file_stream\": unexpected EOF"}
+{"time":"2024-12-16T22:59:31.198874466+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dat-tht225482-hust/movie-recommendation-models/trpfbega/file_stream\": dial tcp: lookup api.wandb.ai on 10.255.255.254:53: read udp 10.255.255.254:54044->10.255.255.254:53: i/o timeout"}
+{"time":"2024-12-16T22:59:56.534382348+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dat-tht225482-hust/movie-recommendation-models/trpfbega/file_stream\": unexpected EOF"}
+{"time":"2024-12-16T23:05:37.68704967+07:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2024-12-16T23:05:37.74188283+07:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2024-12-16T23:05:37.749916942+07:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-16T23:05:37.763900503+07:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-16T23:05:38.748866618+07:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run config","runtime_seconds":0.660296339}],"total_operations":1}}
+{"time":"2024-12-16T23:05:40.234052816+07:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-16T23:05:41.581311134+07:00","level":"INFO","msg":"stream: closing","id":"trpfbega"}
+{"time":"2024-12-16T23:05:41.581365067+07:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"trpfbega"}}
+{"time":"2024-12-16T23:05:41.581503836+07:00","level":"INFO","msg":"sender: closed","stream_id":"trpfbega"}
+{"time":"2024-12-16T23:05:41.581452583+07:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"trpfbega"}}
+{"time":"2024-12-16T23:05:41.581599894+07:00","level":"INFO","msg":"stream: closed","id":"trpfbega"}
