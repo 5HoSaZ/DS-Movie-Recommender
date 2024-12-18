@@ -26,7 +26,11 @@ Dataset and model weights are hosted on [onedrive](https://husteduvn-my.sharepoi
 Data crawling require a [TMDb API](https://developer.themoviedb.org/reference/intro/getting-started) and 
 the [MovieLens 32m](https://grouplens.org/datasets/movielens/32m/) dataset to work.
 
-![alt text](database/images/database.png)
+<p float="left">
+  <img src="./database/images/database.png" width="100" />
+  <img src="./database/images/models.png" width="100" /> 
+</p>
+
 
 ## Data Crawling
 
