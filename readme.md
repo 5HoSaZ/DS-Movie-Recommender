@@ -1,7 +1,7 @@
 
 # Movie Recommender
 
-Capstone Project Submission for IT4142E - Introduction to Data Science, Hanoi University of Science and Technology.
+Capstone Project Submission for **IT4142E - Introduction to Data Science**, Hanoi University of Science and Technology.
 
 Project Topic: *Analyzing Movie Ratings for Recommendation*
 
@@ -23,8 +23,10 @@ Python dependencies are listed in [dependencies.txt](./requirements.txt).
 
 Dataset and model weights are hosted on [onedrive](https://husteduvn-my.sharepoint.com/:f:/g/personal/dat_tht225482_sis_hust_edu_vn/EvzkosUBg2xHtBl4hZejPaABc696kWogjRTSmEKATdjiXA?e=xwvaaS). Please download and extract them first for our models and app to work.
 
-Data crawling require a [TMDb API](https://developer.themoviedb.org/reference/intro/getting-started) and the MovieLens 32m dataset to work,
-be sure to have one if you want to crawl data yourself.
+Data crawling require a [TMDb API](https://developer.themoviedb.org/reference/intro/getting-started) and 
+the [MovieLens 32m](https://grouplens.org/datasets/movielens/32m/) dataset to work.
+
+![alt text](database/images/database.png)
 
 ## Data Crawling
 
