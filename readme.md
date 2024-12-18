@@ -21,11 +21,9 @@ Training details: [wandb](https://api.wandb.ai/links/dat-tht225482-hust/4nazuki3
 
 Python dependencies are listed in [dependencies.txt](./requirements.txt).
 
-Dataset and model weights are hosted on [onedrive](https://husteduvn-my.sharepoint.com/:f:/g/personal/dat_tht225482_sis_hust_edu_vn/EvzkosUBg2xHtBl4hZejPaABc696kWogjRTSmEKATdjiXA?e=xwvaaS). Please download and extract them first for our models and app to work.
+Dataset and model weights are hosted on [onedrive](https://husteduvn-my.sharepoint.com/:f:/g/personal/dat_tht225482_sis_hust_edu_vn/EvzkosUBg2xHtBl4hZejPaABc696kWogjRTSmEKATdjiXA?e=xwvaaS). Please download and extract them first for our models and app to work.~~s~~
 
-Data crawling require a valid [TMDb API](https://developer.themoviedb.org/reference/intro/getting-started) and the [MovieLens 32m](https://grouplens.org/datasets/movielens/32m/) dataset.
-
-Upon completion, the workspace should look like this:
+The workspace after extraction should look like this:
 
 <p float="left" align="center">
   <img src="./database/images/database.png" width="238" />
@@ -34,7 +32,7 @@ Upon completion, the workspace should look like this:
 
 ## Data Crawling
 
-To data crawl, run [imdb_to_tmdb.py](imdb_to_tmdb.py) first
+To data crawl, run [data_correction.ipynb](notebooks/data_correction.ipynb) first to
 
 ## Demo
 
