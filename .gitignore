@@ -12,4 +12,3 @@ models/cb/*.pt
 models/cf/*.pth
 models/hybrid/*.pth
 app.py
-readme.md
