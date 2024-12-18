@@ -27,7 +27,7 @@ class Requester:
         }
 
     def __get_api_key(self):
-        api_path = "./scrapers/drivers/apikey/moviedb.txt"
+        api_path = "./scrapers/drivers/moviedb.txt"
         if not os.path.isfile(api_path):
             api_key = input("Input tmdb apikey: ")
             with open(api_path, "w") as file:

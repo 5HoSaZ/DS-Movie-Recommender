@@ -35,6 +35,12 @@ class EmbededHybridNet(nn.Module):
         # Relu
         self.relu = nn.ReLU()
 
+    def to(self, device):
+        self.item_weighted_genres = self.item_weighted_genres.to(device)
+        self.item_titles_plots = self.item_titles_plots.to(device)
+        self.item_directors_casts = self.item_directors_casts.to(device)
+        return super().to(device)
+
     def __call__(self, user, item):
         # Weighted genres
         user_weighted_genres = self.user_weighted_genres(user)
