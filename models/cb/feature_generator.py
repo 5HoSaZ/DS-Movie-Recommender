@@ -15,3 +15,11 @@ class FeatureGenerator(nn.Module):
     def __call__(self, items):
         features = self.tf_matrix[items]
         return features
+
+    def get_top_similar(self, item_idx: int, top: int = 10):
+        vect = self.tf_matrix[item_idx].unsqueeze(0)
+        sims = torch.nn.CosineSimilarity()(vect, self.tf_matrix)
+        values, indices = torch.sort(sims, descending=True)
+        values = values[indices != item_idx][:top].cpu()
+        indices = indices[indices != item_idx][:top].cpu()
+        return indices, values
