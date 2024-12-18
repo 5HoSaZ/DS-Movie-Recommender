@@ -1,10 +1,15 @@
 drivers/firefox/geckodriver.exe
-*database
 *tmp
 *scrapers/drivers/moviedb.txt
+database/imdb
+database/tmdb
+database/ml-32m
+database/merged/*
+!database/merged/*.md
 notebook.ipynb
 wandb_key.txt
 models/cb/*.pt
 models/cf/*.pth
 models/hybrid/*.pth
 app.py
+readme.md
