@@ -21,7 +21,7 @@ Training details: [wandb](https://api.wandb.ai/links/dat-tht225482-hust/4nazuki3
 
 Python dependencies are listed in [dependencies.txt](./requirements.txt).
 
-Dataset and model weights are hosted on [onedrive](https://husteduvn-my.sharepoint.com/:f:/g/personal/dat_tht225482_sis_hust_edu_vn/EvzkosUBg2xHtBl4hZejPaABc696kWogjRTSmEKATdjiXA?e=xwvaaS). Please download and extract them first for our models and app to work.~~s~~
+Dataset and model weights are hosted on [onedrive](https://husteduvn-my.sharepoint.com/:f:/g/personal/dat_tht225482_sis_hust_edu_vn/EvzkosUBg2xHtBl4hZejPaABc696kWogjRTSmEKATdjiXA?e=xwvaaS). Please download and extract them first for our models and app to work properly.
 
 The workspace after extraction should look like this:
 
@@ -30,9 +30,10 @@ The workspace after extraction should look like this:
   <img src="./database/images/models.png" width="140" /> 
 </p>
 
-## Data Crawling
+## Data Reduction
 
-To data crawl, run [data_correction.ipynb](notebooks/data_correction.ipynb) first to
+You can run [data_reduction.ipynb](data_reduction.ipynb) to reduce the dataset. The new dataset will be stored as 
+[database/merged/small](database/merged/small).
 
 ## Demo
 
