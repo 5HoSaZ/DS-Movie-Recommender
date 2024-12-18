@@ -13,14 +13,17 @@ import pandas as pd
 
 
 TEMP = "./tmp"
-website = "imdb"
-NUM_CRAWLERS = 5
+WEBSITE = input("Crawl target: (imdb/tmdb)").lower()
+assert WEBSITE in ["imdb", "tmdb"], f"'{WEBSITE}' is not a valid website!"
+
+NUM_CRAWLERS = int(input("Number of crawlers: "))
+assert NUM_CRAWLERS > 0, "Number must be a positive interger!"
+
 BATCH_SIZE = 200
 MAX_ENTRIES = float("inf")
-# MAX_ENTRIES = 1_000
 BACKUP_INTERVAL = 60
-FIELD_NAMES = get_field_names(website)
-TARGET = f"./database/{website}/movie_entries.csv"
+FIELD_NAMES = get_field_names(WEBSITE)
+TARGET = f"./database/{WEBSITE}/movie_entries.csv"
 
 
 # Write callback
@@ -42,7 +45,7 @@ def dump_to_database():
 
 def remove_duplicate():
     entries = pd.read_csv(TARGET)
-    match website:
+    match WEBSITE:
         case "imdb":
             no_dup = entries.drop_duplicates(subset=["ImdbID"])
         case "tmdb":
@@ -58,7 +61,7 @@ def main():
             writer = csv.DictWriter(writefile, fieldnames=FIELD_NAMES)
             writer.writeheader()
 
-    unprocessed = filter_processed(website)
+    unprocessed = filter_processed(WEBSITE)
     unprocessed = unprocessed.head(min(MAX_ENTRIES, len(unprocessed)))
     batch_count = math.ceil(len(unprocessed) / BATCH_SIZE)
 
@@ -72,7 +75,7 @@ def main():
         batches = split_data(to_process, NUM_CRAWLERS)
 
         for i in range(NUM_CRAWLERS):
-            crawler = get_crawler(website)
+            crawler = get_crawler(WEBSITE)
             worker = Extractor(work_queue, crawler)
             worker.process(batches[i]).start()
 
