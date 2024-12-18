@@ -23,6 +23,9 @@ BATCH_SIZE = 200
 MAX_ENTRIES = float("inf")
 BACKUP_INTERVAL = 60
 FIELD_NAMES = get_field_names(WEBSITE)
+WEBSITE_FOLDER = f"./database/{WEBSITE}"
+if not os.path.isdir(WEBSITE_FOLDER):
+    os.makedirs(WEBSITE_FOLDER)
 TARGET = f"./database/{WEBSITE}/movie_entries.csv"
 
 
