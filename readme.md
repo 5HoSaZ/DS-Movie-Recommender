@@ -1,4 +1,3 @@
-
 # Movie Recommender
 
 Capstone Project Submission for **IT4142E - Introduction to Data Science**, Hanoi University of Science and Technology.
@@ -12,10 +11,11 @@ Project report: [onedrive](https://husteduvn-my.sharepoint.com/:b:/g/personal/da
 Training details: [wandb](https://api.wandb.ai/links/dat-tht225482-hust/4nazuki3).
 
 ## Contribution
-| Member | StudentID   | Project Role    |
-| :---:                     | :---:         | :---: |
-| Tạ Hồ Thành Đạt <lead>  | 20225482      | Data Crawling & Analyzing, Model Training|
-| Hoàng Minh Quân           | 20215236      | Data Crawling & Analyzing, App Building|
+
+|             Member             | StudentID |               Project Role               |
+| :-----------------------------: | :-------: | :---------------------------------------: |
+| Tạ Hồ Thành Đạt `<lead>` | 20225482 | Data Crawling & Analyzing, Model Training |
+|        Hoàng Minh Quân        | 20215236 |  Data Crawling & Analyzing, App Building  |
 
 ## Requirement
 
@@ -23,32 +23,26 @@ Python dependencies are listed in [dependencies.txt](./requirements.txt).
 
 Dataset and model weights are hosted on [onedrive](https://husteduvn-my.sharepoint.com/:f:/g/personal/dat_tht225482_sis_hust_edu_vn/EvzkosUBg2xHtBl4hZejPaABc696kWogjRTSmEKATdjiXA?e=xwvaaS). Please download and extract them first for our models and app to work.
 
-Data crawling require a [TMDb API](https://developer.themoviedb.org/reference/intro/getting-started) and 
-the [MovieLens 32m](https://grouplens.org/datasets/movielens/32m/) dataset to work.
+Data crawling require a valid [TMDb API](https://developer.themoviedb.org/reference/intro/getting-started) and the [MovieLens 32m](https://grouplens.org/datasets/movielens/32m/) dataset.
+
+Upon completion, the workspace should look like this:
 
 <p float="left" align="center">
-  <img src="./database/images/database.png" width="200" />
-  <img src="./database/images/models.png" width="100" /> 
+  <img src="./database/images/database.png" width="238" />
+  <img src="./database/images/models.png" width="140" /> 
 </p>
-
 
 ## Data Crawling
 
-To data crawl, run
+To data crawl, run [imdb_to_tmdb.py](imdb_to_tmdb.py) first
+
 ## Demo
-
-
-
 
 ## Acknowledgements
 
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-
-
-
-
+- [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+- [Awesome README](https://github.com/matiassingers/awesome-readme)
+- [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
 ## Citation
 
