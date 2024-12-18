@@ -23,15 +23,16 @@ def __get_cb_recommendation(movie, model: FeatureGenerator, top, device):
     return movie_ids, sim_scores
 
 
-def __get_cf_recommendation(user, num_items, model: CFNet, top, device):
+def __get_cf_recommendation(user, num_items, model: CFNet, top, device, excludes=[]):
     model = model.to(device).eval()
     users = torch.tensor([user] * num_items, dtype=torch.int64, device=device)
     movies = torch.tensor(range(num_items), dtype=torch.int64, device=device)
     with torch.no_grad():
         ratings = torch.flatten(model(users, movies))
     values, indices = torch.sort(ratings, descending=True)
-    values = values[:top].cpu()
-    indices = indices[:top].cpu()
+    valid = torch.isin(indices, torch.tensor(excludes), invert=True)
+    values = values[valid][:top].cpu()
+    indices = indices[valid][:top].cpu()
     return indices, values
 
 
