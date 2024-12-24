@@ -18,8 +18,11 @@ class FireFoxDriver(webdriver.Firefox):
 
 
 class Requester:
-    def __init__(self):
-        self.__api_key = input("Input tmdb apikey: ")
+    def __init__(self, api_key: str = None):
+        if api_key is None:
+            self.__api_key = input("Input tmdb apikey: ")
+        else:
+            self.__api_key = api_key
         self.__header = {
             "accept": "application/json",
             "Authorization": f"Bearer {self.__api_key}",
