@@ -2,7 +2,7 @@
 
 Capstone Project Submission for **IT4142E - Introduction to Data Science**, Hanoi University of Science and Technology.
 
-Project Topic: *Analyzing Movie Ratings for Recommendation*
+Project Topic: _Analyzing Movie Ratings for Recommendation_
 
 Supervisor: Prof. Than Quang Khoat
 
@@ -12,10 +12,10 @@ Training details: [Wandb](https://api.wandb.ai/links/dat-tht225482-hust/4nazuki3
 
 ## Contribution
 
-|             Member             | StudentID |               Project Role               |
-| :-----------------------------: | :-------: | :---------------------------------------: |
-| Tạ Hồ Thành Đạt `<lead>` | 20225482 | Data Crawling & Analyzing, Model Training |
-|        Hoàng Minh Quân        | 20215236 |  Data Crawling & Analyzing, App Building  |
+|          Member          | StudentID |               Project Role                |
+| :----------------------: | :-------: | :---------------------------------------: |
+| Tạ Hồ Thành Đạt `<lead>` | 20225482  | Data Crawling & Analyzing, Model Training |
+|     Hoàng Minh Quân      | 20215236  |  Data Crawling & Analyzing, App Building  |
 
 ## Requirement
 
@@ -55,7 +55,7 @@ The new dataset will be stored as [database/merged/small](./database/merged/smal
 
 Code example on how to use our model can be found in [demo.ipynb](./demo.ipynb).
 
-For app demo using streamlit, run `streamlit run app.py` in terminal.
+For app demo using streamlit, run `streamlit run app_cf.py` in terminal.
 
 ## Citation
 

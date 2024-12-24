@@ -39,3 +39,7 @@ def __get_cf_recommendation(user, num_items, model: CFNet, top, device, excludes
 def get_query(movie_data, mapper, indices):
     movie_ids = [mapper.item_inv_map[int(i)] for i in indices]
     return movie_data[movie_data["MovieID"].isin(movie_ids)]
+
+
+def safe_load(path, device):
+    return torch.load(path, map_location=device, weights_only=True)
