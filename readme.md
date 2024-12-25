@@ -55,7 +55,9 @@ The new dataset will be stored as [database/merged/small](./database/merged/smal
 
 Code example on how to use our model can be found in [demo.ipynb](./demo.ipynb).
 
-For app demo using streamlit, run `streamlit run app_cf.py` in terminal.
+For CB app demo using streamlit, run `streamlit run app_cb.py` in terminal.
+
+For CF app demo using streamlit, run `streamlit run app_cf.py` in terminal.
 
 ## Citation
 

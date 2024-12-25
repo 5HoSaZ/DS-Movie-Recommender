@@ -15,7 +15,7 @@ st.title("🎬 Movie Recommendation System")
 
 # Set up streamlit session
 if "session" not in st.session_state:
-    # Import dataset and mapper
+    # Import dataset
     session = Session("cf")
     st.success("Set up new session successfully!")
 else:

@@ -28,6 +28,6 @@ class Requester:
             "Authorization": f"Bearer {self.__api_key}",
         }
 
-    def get(self, url: str):
-        response = requests.get(url, headers=self.__header)
+    def get(self, url: str, timeout: int = None):
+        response = requests.get(url, headers=self.__header, timeout=timeout)
         return json.loads(response.text)
