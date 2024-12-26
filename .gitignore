@@ -10,3 +10,4 @@ wandb_key.txt
 models/cb/*.pt
 models/cf/*.pth
 models/hybrid/*.pth
+models/cb/keywords.npy

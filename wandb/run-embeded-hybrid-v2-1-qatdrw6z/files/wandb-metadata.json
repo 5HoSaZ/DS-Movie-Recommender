@@ -1,0 +1,41 @@
+{
+  "os":  "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python":  "3.12.2",
+  "startedAt":  "2024-12-26T16:38:24.003569Z",
+  "program":  "/home/zelinix_window/workspace/movie-recommendation/hybrid_models.ipynb",
+  "git":  {
+    "remote":  "https://github.com/5HoSaZ/imdb-movie-scraper.git",
+    "commit":  "509ef6498162df8eebb0515eea5ff0972dbca49d"
+  },
+  "email":  "dat.tht225482@sis.hust.edu.vn",
+  "root":  "/home/zelinix_window/workspace/movie-recommendation",
+  "host":  "TTZO",
+  "username":  "zelinix_window",
+  "executable":  "/home/zelinix_window/anaconda3/envs/vocalopy/bin/python",
+  "codePathLocal":  "hybrid_models.ipynb",
+  "cpu_count":  6,
+  "cpu_count_logical":  12,
+  "gpu":  "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "1081101176832",
+      "used":  "86350917632"
+    }
+  },
+  "memory":  {
+    "total":  "7980896256"
+  },
+  "cpu":  {
+    "count":  6,
+    "countLogical":  12
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+      "memoryTotal":  "4294967296",
+      "architecture":  "Ampere"
+    }
+  ],
+  "cudaVersion":  "12.5"
+}
