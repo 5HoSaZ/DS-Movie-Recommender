@@ -7,8 +7,7 @@ from typing import Iterable
 
 
 class TFIDVectAndStem:
-
-    def __init__(self, min_df: float, max_df: float):
+    def __init__(self, min_df, max_df):
         self.stemmer = EnglishStemmer()
         self.tfidf = TfidfVectorizer(
             analyzer="word",
@@ -19,6 +18,7 @@ class TFIDVectAndStem:
         )
         self.__tf_matrix = None
         self.vocab = None
+        self.features = None
 
     @property
     def tf_matrix(self):
@@ -43,6 +43,7 @@ class TFIDVectAndStem:
         stemmed = [self.__snowball(text) for text in texts]
         self.__tf_matrix = self.tfidf.fit_transform(list(stemmed))
         self.vocab = self.tfidf.vocabulary_
+        self.features = self.tfidf.get_feature_names_out()
 
     def __call__(self, texts: Iterable[str]):
         texts = [re.sub("[^A-Za-z ]+", "", text) for text in texts]
