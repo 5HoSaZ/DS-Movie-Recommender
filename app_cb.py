@@ -1,7 +1,7 @@
 from models import get_recommendation, get_query, safe_load
 from scrapers.drivers import Requester
 from models.cb import FeatureGenerator
-from utility import Mapper, Session
+from utility import Mapper, Session, KewwordsHighlighter
 
 import os
 import torch
@@ -29,6 +29,7 @@ else:
 
 # Setup recommender
 recommender = get_recommendation("cb", 10, DEVICE)
+hl = KewwordsHighlighter("./models/cb/vocab.json")
 
 # Select model for recommendation
 with st.sidebar:
@@ -38,9 +39,9 @@ with st.sidebar:
             case "Genres+Ratings":
                 weights = safe_load("./models/cb/genres_with_ratings.pt", DEVICE)
             case "Titles+Plots":
-                weights = safe_load("./models/cb/titles_and_plots.pt", DEVICE)
+                weights = safe_load("./models/cb/titles_and_plots_v2.pt", DEVICE)
             case "Directors+Actors":
-                weights = safe_load("./models/cb/directors_and_cast.pt", DEVICE)
+                weights = safe_load("./models/cb/directors_and_cast_v2.pt", DEVICE)
         session.model_name = current_model
         session.model = FeatureGenerator(weights)
 st.success("Model loaded successfully!")
@@ -122,7 +123,8 @@ if recommend_button:
                 case "Genres+Ratings":
                     st.write(f"**Genres**: {", ".join(literal_eval(row['Genres']))}")
                 case "Titles+Plots":
-                    st.write(f"**Plot**: {row['Plot']}")
+                    hl_plot = hl(row["Plot"])
+                    st.write(f"**Plot**: {hl_plot}")
                 case "Directors+Actors":
                     st.write(
                         f"**Directors**: {", ".join(literal_eval(row['Directors']))}"
