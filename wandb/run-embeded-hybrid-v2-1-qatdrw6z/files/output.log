@@ -1,0 +1,51 @@
+Epoch 1: Train Loss: 6.7112e-02 | Train MAE: 2.0185e-01 | Test Loss: 4.9321e-02 | Test MAE: 1.7592e-01 | Time Taken: 6m 06s > Checkpoint saved!
+Epoch 2: Train Loss: 4.7495e-02 | Train MAE: 1.7261e-01 | Test Loss: 4.6265e-02 | Test MAE: 1.7042e-01 | Time Taken: 6m 59s > Checkpoint saved!
+Epoch 3: Train Loss: 4.5683e-02 | Train MAE: 1.6938e-01 | Test Loss: 4.5202e-02 | Test MAE: 1.6854e-01 | Time Taken: 7m 11s > Checkpoint saved!
+Epoch 4: Train Loss: 4.4940e-02 | Train MAE: 1.6807e-01 | Test Loss: 4.4687e-02 | Test MAE: 1.6760e-01 | Time Taken: 7m 20s > Checkpoint saved!
+Epoch 5: Train Loss: 4.4546e-02 | Train MAE: 1.6735e-01 | Test Loss: 4.4386e-02 | Test MAE: 1.6707e-01 | Time Taken: 7m 14s > Checkpoint saved!
+Epoch 6: Train Loss: 4.4301e-02 | Train MAE: 1.6688e-01 | Test Loss: 4.4187e-02 | Test MAE: 1.6665e-01 | Time Taken: 7m 03s > Checkpoint saved!
+Epoch 7: Train Loss: 4.4131e-02 | Train MAE: 1.6654e-01 | Test Loss: 4.4041e-02 | Test MAE: 1.6637e-01 | Time Taken: 6m 59s > Checkpoint saved!
+Epoch 8: Train Loss: 4.3999e-02 | Train MAE: 1.6627e-01 | Test Loss: 4.3923e-02 | Test MAE: 1.6612e-01 | Time Taken: 6m 52s > Checkpoint saved!
+Epoch 9: Train Loss: 4.3889e-02 | Train MAE: 1.6604e-01 | Test Loss: 4.3822e-02 | Test MAE: 1.6588e-01 | Time Taken: 6m 41s > Checkpoint saved!
+Epoch 10: Train Loss: 4.3793e-02 | Train MAE: 1.6583e-01 | Test Loss: 4.3731e-02 | Test MAE: 1.6566e-01 | Time Taken: 6m 37s > Checkpoint saved!
+Epoch 11: Train Loss: 4.3703e-02 | Train MAE: 1.6563e-01 | Test Loss: 4.3645e-02 | Test MAE: 1.6547e-01 | Time Taken: 7m 00s > Checkpoint saved!
+Epoch 12: Train Loss: 4.3618e-02 | Train MAE: 1.6544e-01 | Test Loss: 4.3561e-02 | Test MAE: 1.6529e-01 | Time Taken: 6m 55s > Checkpoint saved!
+Epoch 13: Train Loss: 4.3532e-02 | Train MAE: 1.6524e-01 | Test Loss: 4.3477e-02 | Test MAE: 1.6510e-01 | Time Taken: 6m 27s > Checkpoint saved!
+Epoch 14: Train Loss: 4.3448e-02 | Train MAE: 1.6504e-01 | Test Loss: 4.3394e-02 | Test MAE: 1.6495e-01 | Time Taken: 6m 16s > Checkpoint saved!
+Epoch 15: Train Loss: 4.3362e-02 | Train MAE: 1.6484e-01 | Test Loss: 4.3308e-02 | Test MAE: 1.6472e-01 | Time Taken: 6m 01s > Checkpoint saved!
+Epoch 16: Train Loss: 4.3275e-02 | Train MAE: 1.6463e-01 | Test Loss: 4.3220e-02 | Test MAE: 1.6451e-01 | Time Taken: 6m 06s > Checkpoint saved!
+Epoch 17: Train Loss: 4.3184e-02 | Train MAE: 1.6442e-01 | Test Loss: 4.3128e-02 | Test MAE: 1.6429e-01 | Time Taken: 6m 00s > Checkpoint saved!
+Epoch 18: Train Loss: 4.3089e-02 | Train MAE: 1.6419e-01 | Test Loss: 4.3031e-02 | Test MAE: 1.6405e-01 | Time Taken: 6m 24s > Checkpoint saved!
+Epoch 19: Train Loss: 4.2985e-02 | Train MAE: 1.6394e-01 | Test Loss: 4.2928e-02 | Test MAE: 1.6381e-01 | Time Taken: 6m 27s > Checkpoint saved!
+Epoch 20: Train Loss: 4.2878e-02 | Train MAE: 1.6368e-01 | Test Loss: 4.2818e-02 | Test MAE: 1.6354e-01 | Time Taken: 6m 21s > Checkpoint saved!
+Epoch 21: Train Loss: 4.2760e-02 | Train MAE: 1.6339e-01 | Test Loss: 4.2698e-02 | Test MAE: 1.6323e-01 | Time Taken: 6m 30s > Checkpoint saved!
+Epoch 22: Train Loss: 4.2634e-02 | Train MAE: 1.6309e-01 | Test Loss: 4.2568e-02 | Test MAE: 1.6293e-01 | Time Taken: 6m 30s > Checkpoint saved!
+Epoch 23: Train Loss: 4.2496e-02 | Train MAE: 1.6275e-01 | Test Loss: 4.2425e-02 | Test MAE: 1.6258e-01 | Time Taken: 6m 41s > Checkpoint saved!
+Epoch 24: Train Loss: 4.2344e-02 | Train MAE: 1.6238e-01 | Test Loss: 4.2269e-02 | Test MAE: 1.6219e-01 | Time Taken: 6m 18s > Checkpoint saved!
+Epoch 25: Train Loss: 4.2180e-02 | Train MAE: 1.6198e-01 | Test Loss: 4.2100e-02 | Test MAE: 1.6178e-01 | Time Taken: 6m 31s > Checkpoint saved!
+Epoch 26: Train Loss: 4.2004e-02 | Train MAE: 1.6154e-01 | Test Loss: 4.1919e-02 | Test MAE: 1.6132e-01 | Time Taken: 6m 34s > Checkpoint saved!
+Epoch 27: Train Loss: 4.1814e-02 | Train MAE: 1.6108e-01 | Test Loss: 4.1727e-02 | Test MAE: 1.6086e-01 | Time Taken: 6m 40s > Checkpoint saved!
+Epoch 28: Train Loss: 4.1616e-02 | Train MAE: 1.6059e-01 | Test Loss: 4.1529e-02 | Test MAE: 1.6037e-01 | Time Taken: 6m 53s > Checkpoint saved!
+Epoch 29: Train Loss: 4.1415e-02 | Train MAE: 1.6009e-01 | Test Loss: 4.1328e-02 | Test MAE: 1.5987e-01 | Time Taken: 6m 41s > Checkpoint saved!
+Epoch 30: Train Loss: 4.1212e-02 | Train MAE: 1.5959e-01 | Test Loss: 4.1127e-02 | Test MAE: 1.5940e-01 | Time Taken: 6m 37s > Checkpoint saved!
+Epoch 31: Train Loss: 4.1011e-02 | Train MAE: 1.5910e-01 | Test Loss: 4.0930e-02 | Test MAE: 1.5890e-01 | Time Taken: 6m 28s > Checkpoint saved!
+Epoch 32: Train Loss: 4.0816e-02 | Train MAE: 1.5863e-01 | Test Loss: 4.0739e-02 | Test MAE: 1.5844e-01 | Time Taken: 6m 34s > Checkpoint saved!
+Epoch 33: Train Loss: 4.0627e-02 | Train MAE: 1.5818e-01 | Test Loss: 4.0555e-02 | Test MAE: 1.5799e-01 | Time Taken: 6m 13s > Checkpoint saved!
+Epoch 34: Train Loss: 4.0444e-02 | Train MAE: 1.5774e-01 | Test Loss: 4.0375e-02 | Test MAE: 1.5755e-01 | Time Taken: 5m 58s > Checkpoint saved!
+Epoch 35: Train Loss: 4.0265e-02 | Train MAE: 1.5731e-01 | Test Loss: 4.0198e-02 | Test MAE: 1.5712e-01 | Time Taken: 5m 37s > Checkpoint saved!
+Epoch 36: Train Loss: 4.0088e-02 | Train MAE: 1.5689e-01 | Test Loss: 4.0019e-02 | Test MAE: 1.5673e-01 | Time Taken: 5m 37s > Checkpoint saved!
+Epoch 37: Train Loss: 3.9907e-02 | Train MAE: 1.5647e-01 | Test Loss: 3.9838e-02 | Test MAE: 1.5631e-01 | Time Taken: 5m 32s > Checkpoint saved!
+Epoch 38: Train Loss: 3.9722e-02 | Train MAE: 1.5604e-01 | Test Loss: 3.9654e-02 | Test MAE: 1.5585e-01 | Time Taken: 5m 33s > Checkpoint saved!
+Epoch 39: Train Loss: 3.9535e-02 | Train MAE: 1.5559e-01 | Test Loss: 3.9466e-02 | Test MAE: 1.5543e-01 | Time Taken: 5m 33s > Checkpoint saved!
+Epoch 40: Train Loss: 3.9347e-02 | Train MAE: 1.5515e-01 | Test Loss: 3.9274e-02 | Test MAE: 1.5498e-01 | Time Taken: 5m 31s > Checkpoint saved!
+318 Shawshank Redemption, The (1994) 0.7871029376983643
+858 Godfather, The (1972) 0.7841407656669617
+1464 Lost Highway (1997) 0.7833184599876404
+3435 Double Indemnity (1944) 0.7824506759643555
+58559 Dark Knight, The (2008) 0.7813116312026978
+4848 Mulholland Drive (2001) 0.778712272644043
+1221 Godfather: Part II, The (1974) 0.7774827480316162
+44761 Brick (2005) 0.7748100161552429
+183461 Godless (2017) 0.7734577655792236
+4406 Man Who Shot Liberty Valance, The (1962) 0.7712690234184265
+Epoch 41 --- Training: Batch 53/6251
